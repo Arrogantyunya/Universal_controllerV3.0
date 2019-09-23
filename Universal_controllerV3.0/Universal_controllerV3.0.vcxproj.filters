@@ -21,5 +21,79 @@
     <ClInclude Include="__vm\.Universal_controllerV3.0.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AT24CXX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="i2c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_A011_E011.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_A021_E021.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_A025_E025.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_crc8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_filter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_HEXtoDEC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_initialization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_judgement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_lorainit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_Set_Correlation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AT24CXX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="i2c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_A011_E011.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_A021_E021.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_A025_E025.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_crc8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_filter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_HEXtoDEC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_initialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_judgement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_lorainit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_Set_Correlation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
