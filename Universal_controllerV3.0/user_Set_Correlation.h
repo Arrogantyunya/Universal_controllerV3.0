@@ -351,6 +351,43 @@ static enum Device_status
 	Incorrect_information_error = 0x13//区域信息错误
 }E020_status = FactoryMode;
 
+// 类结构声明
+//LORA开关型设备的通用回执状态(结构类型，枚举)
+static enum E015_Device_status
+{
+	E015_FactoryMode = 0x00,//出厂模式
+	AskUploadParamsOk = 0x01,//查询LoRa设备参数成功
+	AskUploadParamsErr = 0x02,//查询LoRa设备参数失败
+	AssignGroupIdArrayOk = 0x03,//设置组Id数组成功
+	AssignGroupIdArrayErr = 0x04,//设置组Id数组失败
+	SetSnAndSlaverCountOk = 0x05,//设置主设备区域、SN及子设备路数成功
+	SetSnAndSlaverCountErr = 0x06,//设置主设备区域、SN及子设备路数失败
+	TrunOffOk = 0x07,//强制停止设备成功
+	TrunOffErr = 0x08,//强制停止设备失败
+	SetParamsOk = 0x09,//设置参数成功
+	SetParamsErr = 0x0A,//设置参数失败
+	
+	//SetArea_and_SN_Success = 0x01,//设置主设备区域及SN成功
+	//Set_Area_and_SN_Failure = 0x02,//设置主设备区域及SN失败
+	//Set_subdevice_type_and_workgroup_success = 0x03,//设置子设备类型及工作组成功
+	//Set_subdevice_type_and_workgroup_failed = 0x04,//设置子设备类型及工作组失败
+	//Set_digital_output_status_success = 0x05,//设置数字输出状态成功
+	//Set_digital_output_status_failed = 0x06,//设置数字输出状态失败
+	//Set_analog_output_status_success = 0x07,//设置模拟输出成功
+	//Set_analog_output_status_failed = 0x08,//设置模拟输出失败
+	//Set_association_status_succeed = 0x09,//设置关联状态成功
+	//Set_association_status_failed = 0x0A,//设置关联状态失败
+	//State_Storage_Exceeding_the_Upper_Limit = 0x0B,//关联状态失败，存储超上限
+	//Set_reserved_field_success = 0x0C,//设置预留字段成功
+	//Set_reserved_field_failed = 0x0D,//设置预留字段失败
+	//Data_loss_due_to_abnormal_power_off = 0x0E,//异常断电数据丢失
+	//Set_RTC_clock_success = 0x0F,//设置RTC时间成功
+	//Set_RTC_clock_failed = 0x10,//设置RTC时间失败
+	//Set_time_interval_success = 0x11,//设置时间段成功
+	//Set_time_interval_failed = 0x12,//设置时间段失败
+	//Incorrect_information_error = 0x13//区域信息错误
+}E015_status = E015_FactoryMode;
+
 //输出状态(结构类型，枚举)
 static enum OUT_STATES
 {

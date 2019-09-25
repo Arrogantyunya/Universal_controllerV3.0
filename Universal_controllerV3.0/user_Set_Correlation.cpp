@@ -1,6 +1,22 @@
-﻿// 
-// 
-// 
+﻿//user_Set_Correlation.cpp
+/*
+*版权
+*
+* 文件名称:user_Set_Correlation.cpp
+* 文件标识:配置管理计划书
+* 摘要:
+*
+* 当前版本:V1.0
+* 作者:刘家辉
+* 完成日期:2019-9-24
+* 修改者:刘家辉
+* 修改日期:
+* 修改:
+*
+* 取代版本:
+* 原作者:刘家辉
+* 完成日期:
+*/
 
 #include "user_Set_Correlation.h"
 #include "user_initialization.h"
@@ -105,7 +121,7 @@ void Receive_A012(unsigned char* Judgement_Data, int Judgement_Length)
 
 //函 数 名：Receive_A013() 
 //功能描述：A013的执行函数
-//函数说明：设置LORA主设备的区域以及SN
+//函数说明：设置LORA主设备的区域以及SN以及子设备总路数
 //调用函数：
 //全局变量：
 //输 入：
@@ -139,13 +155,13 @@ void Receive_A013(unsigned char * Judgement_Data, int Judgement_Length)//A013函
 		Serial.println(ZoneID, HEX);
 	}
 	AT24CXX_WriteOneByte(12, ZoneID);	//将区域ID写入EEPROM
-	for (size_t i = 8; i <= 16; i++)	//将SN写入EEPROM
+	for (size_t i = 10; i <= 18; i++)	//将SN写入EEPROM
 	{
-		AT24CXX_WriteOneByte(i - 5, Judgement_Data[i]);
+		AT24CXX_WriteOneByte(i - 7, Judgement_Data[i]);
 		if (debug_print == 1)
 		{
 			Serial.print(String("AT24CXX_ReadOneByte[ ") + String(i-5) + String(" ]="));
-			Serial.println(AT24CXX_ReadOneByte(i - 5), HEX);
+			Serial.println(AT24CXX_ReadOneByte(i - 7), HEX);
 		}
 	}
 

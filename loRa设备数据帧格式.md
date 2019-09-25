@@ -308,8 +308,6 @@ __redisPub_sysConfigAck('LORA_COMMON_CMD', "SET_GROUP_ID_ARRAY", 'failure', "设
 61 14432A0C 000100 FE A014 04 C001 01 01 00 E1 0D0A0D0A0D0A
 ```
 
-
-
 ### 1.8 LoRa设备上报实时工作状态（E014）
 
 #### 返回协议帧格式

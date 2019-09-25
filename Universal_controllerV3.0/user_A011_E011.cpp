@@ -233,10 +233,10 @@ unsigned char E011_init()
 	E011_ZoneId = AT24CXX_ReadOneByte(12);         //E011的区域
 
 	E011_GroupIDArray1 = 0x01;		//E011的组ID数组1
-	E011_GroupIDArray2 = 0x01;		//E011的组ID数组2	
-	E011_GroupIDArray3 = 0x01;		//E011的组ID数组3	
-	E011_GroupIDArray4 = 0x01;		//E011的组ID数组4	
-	E011_GroupIDArray5 = 0x01;		//E011的组ID数组5	
+	E011_GroupIDArray2 = 0x00;		//E011的组ID数组2	
+	E011_GroupIDArray3 = 0x00;		//E011的组ID数组3	
+	E011_GroupIDArray4 = 0x00;		//E011的组ID数组4	
+	E011_GroupIDArray5 = 0x00;		//E011的组ID数组5	
 
 	E011_DeviceSN1 = AT24CXX_ReadOneByte(3);       //E011的SN1
 	E011_DeviceSN2 = AT24CXX_ReadOneByte(4);       //E011的SN2

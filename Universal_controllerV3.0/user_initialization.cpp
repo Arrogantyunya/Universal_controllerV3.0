@@ -128,7 +128,7 @@ void Initialization()//初始化函数
 	if (AT24CXX_ReadOneByte(1) == 0x01)
 	{
 		//说明进行过EEPROM的初始化
-		Serial.println("EEPROM已进行过初始化");
+		//Serial.println("EEPROM已进行过初始化");
 		Serial.println("EEPROM already setup");
 		if (debug == 1)
 		{
@@ -139,7 +139,8 @@ void Initialization()//初始化函数
 	{
 		if (LORA_reset == 1 || AT24CXX_ReadOneByte(0) != 0x01)
 		{
-			Serial.println("LORA进行初始化");
+			//Serial.println("LORA进行初始化");
+			Serial.println("LORA begin init");
 			AT24CXX_WriteOneByte(0, 0x00);//LORA初始化完成的标志位
 		}
 		//else
@@ -180,7 +181,7 @@ void Initialization()//初始化函数
 		//---------------------------------------------------------
 		AT24CXX_WriteOneByte(1, 0x01);//EEPROM初始化完成的标志位
 		//Serial.println(EEPROM.read(1),HEX);
-		Serial.println("EEPROM存储空间的初始化完成");
+		//Serial.println("EEPROM存储空间的初始化完成");
 		Serial.println("EEPROM Successful setup");
 		if (debug == 1)
 		{
@@ -191,7 +192,7 @@ void Initialization()//初始化函数
 	//这里就读取LORA标志位是否设置完成，未设置完成就进行LORA模块的设置
 	if (AT24CXX_ReadOneByte(0) == 0x01)
 	{
-		Serial.println("LORA已进行过初始化");
+		//Serial.println("LORA已进行过初始化");
 		Serial.println("LORA already setup");
 		if (debug == 1)
 		{
@@ -200,8 +201,8 @@ void Initialization()//初始化函数
 	}
 	else
 	{
-		Serial.println("LORA开始设置......");
-		Serial.println("LORA Setup Begin");
+		//Serial.println("LORA开始设置......");
+		Serial.println("LORA Setup Begin......");
 		Serial.println(AT24CXX_ReadOneByte(0), HEX);//0
 		if (debug == 1)
 		{
@@ -214,7 +215,7 @@ void Initialization()//初始化函数
 
 	if (debug == 1)
 	{
-		Serial.println("结束Initialization函数");
+		Serial.println("End Initialization function");
 	}
 
 }

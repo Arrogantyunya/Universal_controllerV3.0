@@ -15,13 +15,16 @@
 
 
 // Define Functions below here or use other .ino or cpp files
+//#include <A_STM32_Examples.h>
+//#include <ArduinoJson.hpp>
+//#include <ArduinoJson.h>
+#include <arduino.h>
 #include "user_Set_Correlation.h"
 #include "user_A025_E025.h"
 #include "user_A021_E021.h"
 #include "user_crc8.h"
 #include "user_judgement.h"
 #include "user_A011_E011.h"
-#include <arduino.h>
 #include "user_lorainit.h"
 #include "user_initialization.h"
 #include "AT24CXX.h"
@@ -49,11 +52,14 @@ void setup()
 {
 	Initialization();//初始化函数
 
-	Serial.println("初始化执行结束");
+	/*Serial.println("初始化执行结束");*/
+	Serial.println("End of Initialization Execution");
 
 	if (AT24CXX_ReadOneByte(0) == 0x01 && AT24CXX_ReadOneByte(1) == 0x01)
 	{
-		Serial.println("初始化程序执行成功！");
+		/*Serial.println("初始化程序执行成功！");*/
+		Serial.println("Successful execution of initializer!!!");
+
 		//初始化完成状态灯1红绿交替闪烁5次
 		for (size_t i = 0; i < 5; i++)
 		{
@@ -190,7 +196,8 @@ void Initialization_exception(void)//初始化异常函数
 	while (1)
 	{
 		digitalWrite(LED1, HIGH);
-		Serial.println("初始化程序执行失败");
+		//Serial.println("初始化程序执行失败");
+		Serial.println("Initializer failed to execute!");
 		delay(2000);
 	}
 }
@@ -200,7 +207,8 @@ void Button_Waiting_report(void)//按键等待上报函数
 	while (AT24CXX_ReadOneByte(2) == 0x00)//Register_OK_flag	已经完成申号的标志位
 	{
 		//代表未设置工作参数
-		Serial.println("未设置工作参数,如需要设置工作参数，请长按按键1");
+		//Serial.println("未设置工作参数,如需要设置工作参数，请长按按键1");
+		Serial.println("No working parameters are set.If you need to set working parameters, press the key 1 for a long time.");
 		digitalWrite(LED2, HIGH);
 		delay(1500);
 		//等待按键1按下
@@ -210,8 +218,10 @@ void Button_Waiting_report(void)//按键等待上报函数
 			if (digitalRead(K1) == LOW)
 			{
 				digitalWrite(LED2, LOW);
-				Serial.println("K1按下");
-				Serial.println("本设备开始上报当前的设置参数");
+				//Serial.println("K1按下");
+				//Serial.println("本设备开始上报当前的设置参数");
+				Serial.println("K1 press");
+				Serial.println("The device starts to report the current setting parameters...");
 
 				delay(250);
 				//进入E011函数上报请求当前参数
