@@ -1,4 +1,4 @@
-// user_HEXtoDEC.h
+﻿// user_HEXtoDEC.h
 
 #ifndef _USER_HEXTODEC_h
 #define _USER_HEXTODEC_h

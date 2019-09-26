@@ -1,20 +1,20 @@
-// user_filter.h
+ï»¿// user_filter.h
 /*
-*°æÈ¨
+*ç‰ˆæƒ
 *
-* ÎÄ¼şÃû³Æ:user_filter.h
-* ÎÄ¼ş±êÊ¶:ÅäÖÃ¹ÜÀí¼Æ»®Êé
-* ÕªÒª:½øĞĞÂË²¨
+* æ–‡ä»¶åç§°:user_filter.h
+* æ–‡ä»¶æ ‡è¯†:é…ç½®ç®¡ç†è®¡åˆ’ä¹¦
+* æ‘˜è¦:è¿›è¡Œæ»¤æ³¢
 *
-* µ±Ç°°æ±¾:V1.0
-* ×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
-* ĞŞ¸ÄÕß:
-* ĞŞ¸ÄÈÕÆÚ:
+* å½“å‰ç‰ˆæœ¬:V1.0
+* ä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
+* ä¿®æ”¹è€…:
+* ä¿®æ”¹æ—¥æœŸ:
 *
-* È¡´ú°æ±¾:
-* Ô­×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
+* å–ä»£ç‰ˆæœ¬:
+* åŸä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
 */
 
 #ifndef _USER_FILTER_h
@@ -26,38 +26,38 @@
 	#include "WProgram.h"
 #endif
 
-#include<arduino.h>	//ÒıÓÃ±ê×¼¿âµÄÍ·ÎÄ¼ş
+#include<arduino.h>	//å¼•ç”¨æ ‡å‡†åº“çš„å¤´æ–‡ä»¶
 //#include<EEPROM.h>//
-#include"user_initialization.h"//³õÊ¼»¯
-#include"user_crc8.h"//CRCĞ£Ñé
-#include"user_judgement.h"//ÅĞ¶Ï
-#include"user_filter.h"//ÂË²¨
+#include"user_initialization.h"//åˆå§‹åŒ–
+#include"user_crc8.h"//CRCæ ¡éªŒ
+#include"user_judgement.h"//åˆ¤æ–­
+#include"user_filter.h"//æ»¤æ³¢
 
 
 
-//Òı½Å¶¨Òå
+//å¼•è„šå®šä¹‰
 
 
-//È«¾Ö±äÁ¿
-//static float average;	//Æ½¾ùÖµ
-//static float mode;		//ÖÚÊı
-//static float median;	//ÖĞÎ»Êı
-//static float maximum;	//×î´óÖµ
-//static float minimum;	//×îĞ¡Öµ
-//static float sum;		//ºÍ
-//static float nomaxmin_avr;	//È¥µô×î´ó×îĞ¡ÖµµÃÆ½¾ùÊı
-//static float filter_result;	//ÂË²¨½á¹û
+//å…¨å±€å˜é‡
+//static float average;	//å¹³å‡å€¼
+//static float mode;		//ä¼—æ•°
+//static float median;	//ä¸­ä½æ•°
+//static float maximum;	//æœ€å¤§å€¼
+//static float minimum;	//æœ€å°å€¼
+//static float sum;		//å’Œ
+//static float nomaxmin_avr;	//å»æ‰æœ€å¤§æœ€å°å€¼å¾—å¹³å‡æ•°
+//static float filter_result;	//æ»¤æ³¢ç»“æœ
 static float filterData[50];
 static int filterData_length;
 static int num[50];
 
 
-//È«¾Öº¯ÊıÉùÃ÷
-float Filter(float * filterData, int filterData_length);  //ÂË²¨º¯Êı
+//å…¨å±€å‡½æ•°å£°æ˜
+float Filter(float * filterData, int filterData_length);  //æ»¤æ³¢å‡½æ•°
 float Filter(int* filterData, int filterData_length);
 
 
-//Àà½á¹¹ÉùÃ÷
+//ç±»ç»“æ„å£°æ˜
 
 
 #endif

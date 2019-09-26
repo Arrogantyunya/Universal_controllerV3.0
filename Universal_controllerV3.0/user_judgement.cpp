@@ -44,7 +44,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 			Judgement_Data[Judgement_Length - 1] == 0x0D && Judgement_Data[Judgement_Length - 0] == 0x0A)
 		{
 			//CRC8校验位的判断
-			if (Judgement_Data[Judgement_Length - 6] == CRC_Check_num)
+			if (Judgement_Data[Judgement_Length - 6] == CRC_Check_num || debug_crc == 1)
 			{
 				//判断数据长度
 				//Judgement_Data总长度为28（0x1C），但是Judgement_Length的值为27（0x1B）
@@ -74,7 +74,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A012");
 							}
-							Receive_A012(Judgement_Data, Judgement_Length);
+							//Receive_A012(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x13)//帧ID为A013
 						{
@@ -94,8 +94,39 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A014");
 							}
-							Receive_A014(Judgement_Data, Judgement_Length);
+							//Receive_A014(Judgement_Data, Judgement_Length);
 						}
+						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x15)//帧ID为A015
+						{
+							//帧ID为A015
+							//进入A015的判断函数
+							if (debug_print == 1)
+							{
+								Serial.println("帧ID为A015");
+							}
+							//Receive_A015(Judgement_Data, Judgement_Length);
+						}
+						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x18)//帧ID为A018
+						{
+							//帧ID为A018
+							//进入A018的判断函数
+							if (debug_print == 1)
+							{
+								Serial.println("帧ID为A018");
+							}
+							//Receive_A018(Judgement_Data, Judgement_Length);
+						}
+						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x19)//帧ID为A019
+						{
+							//帧ID为A019
+							//进入A019的判断函数
+							if (debug_print == 1)
+							{
+								Serial.println("帧ID为A019");
+							}
+							//Receive_A019(Judgement_Data, Judgement_Length);
+						}
+
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x20)//帧ID为A020
 						{
 							//帧ID为A020
@@ -104,7 +135,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A020");
 							}
-							Receive_A020(Judgement_Data, Judgement_Length);
+							//Receive_A020(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x21)//帧ID为A021
 						{
@@ -114,7 +145,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A021");
 							}
-							Receive_A021(Judgement_Data, Judgement_Length);
+							//Receive_A021(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x22)//帧ID为A022
 						{
@@ -124,7 +155,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A022");
 							}
-							Receive_A022(Judgement_Data, Judgement_Length);
+							//Receive_A022(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x23)//帧ID为A023
 						{
@@ -134,7 +165,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A023");
 							}
-							Receive_A023(Judgement_Data, Judgement_Length);
+							//Receive_A023(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x24)//帧ID为A024
 						{
@@ -144,7 +175,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A024");
 							}
-							Receive_A024(Judgement_Data, Judgement_Length);
+							//Receive_A024(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x25)//帧ID为A025
 						{
@@ -154,7 +185,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A025");
 							}
-							Receive_A025(Judgement_Data, Judgement_Length);
+							//Receive_A025(Judgement_Data, Judgement_Length);
 						}
 						else
 						{

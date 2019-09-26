@@ -1,57 +1,57 @@
-// user_filter.cpp
+ï»¿// user_filter.cpp
 /*
-*°æÈ¨
+*ç‰ˆæƒ
 *
-* ÎÄ¼şÃû³Æ:user_filter.cpp
-* ÎÄ¼ş±êÊ¶:ÅäÖÃ¹ÜÀí¼Æ»®Êé
-* ÕªÒª:½øĞĞÂË²¨
+* æ–‡ä»¶åç§°:user_filter.cpp
+* æ–‡ä»¶æ ‡è¯†:é…ç½®ç®¡ç†è®¡åˆ’ä¹¦
+* æ‘˜è¦:è¿›è¡Œæ»¤æ³¢
 *
-* µ±Ç°°æ±¾:V1.0
-* ×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
-* ĞŞ¸ÄÕß:
-* ĞŞ¸ÄÈÕÆÚ:
+* å½“å‰ç‰ˆæœ¬:V1.0
+* ä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
+* ä¿®æ”¹è€…:
+* ä¿®æ”¹æ—¥æœŸ:
 *
-* È¡´ú°æ±¾:
-* Ô­×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
+* å–ä»£ç‰ˆæœ¬:
+* åŸä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
 */
 
 #include "user_filter.h"
 
 
-//º¯ Êı Ãû£ºFilter() 
-//¹¦ÄÜÃèÊö£ºÂË²¨º¯Êı
-//º¯ÊıËµÃ÷£º¶ÔÊäÈëµÄ¶à¸ö¸¡µãÊı£¬½øĞĞÂË²¨²Ù×÷£¬
-//µ÷ÓÃº¯Êı£º
-//È«¾Ö±äÁ¿£º
-//Êä Èë£º¸¡µãÊıÊı×éÒÔ¼°Êı×é³¤¶È
-//·µ »Ø£º¸¡µãÊıµÄÂË²¨Öµ
+//å‡½ æ•° åï¼šFilter() 
+//åŠŸèƒ½æè¿°ï¼šæ»¤æ³¢å‡½æ•°
+//å‡½æ•°è¯´æ˜ï¼šå¯¹è¾“å…¥çš„å¤šä¸ªæµ®ç‚¹æ•°ï¼Œè¿›è¡Œæ»¤æ³¢æ“ä½œï¼Œ
+//è°ƒç”¨å‡½æ•°ï¼š
+//å…¨å±€å˜é‡ï¼š
+//è¾“ å…¥ï¼šæµ®ç‚¹æ•°æ•°ç»„ä»¥åŠæ•°ç»„é•¿åº¦
+//è¿” å›ï¼šæµ®ç‚¹æ•°çš„æ»¤æ³¢å€¼
 /////////////////////////////////////////////////////////////////////
 float Filter(float * filterData, int filterData_length)
 {
-	float average = 0.00;		//Æ½¾ùÖµ
-	float mode = 0.00;			//ÖÚÊı
-	float median = 0.00;		//ÖĞÎ»Êı
-	float maximum = 0.00;		//×î´óÖµ
-	float minimum = 999999.99;	//×îĞ¡Öµ
-	float sum = 0.00;			//ºÍ
-	float nomaxmin_avr = 0.00;	//È¥µô×î´ó×îĞ¡ÖµµÃÆ½¾ùÊı
-	float filter_result = 0.00;	//ÂË²¨½á¹û
+	float average = 0.00;		//å¹³å‡å€¼
+	float mode = 0.00;			//ä¼—æ•°
+	float median = 0.00;		//ä¸­ä½æ•°
+	float maximum = 0.00;		//æœ€å¤§å€¼
+	float minimum = 999999.99;	//æœ€å°å€¼
+	float sum = 0.00;			//å’Œ
+	float nomaxmin_avr = 0.00;	//å»æ‰æœ€å¤§æœ€å°å€¼å¾—å¹³å‡æ•°
+	float filter_result = 0.00;	//æ»¤æ³¢ç»“æœ
 
-	int temp = 0;				//Ò»¸öÍ°
-	int a_count = 0;			//µÚ¶ş¸öÍ°
-	int count = 0;				//¼ÆÊıÖµ
+	int temp = 0;				//ä¸€ä¸ªæ¡¶
+	int a_count = 0;			//ç¬¬äºŒä¸ªæ¡¶
+	int count = 0;				//è®¡æ•°å€¼
 	int b_count = 0;			//
 
 
-	//for (int i = 0; i < filterData_length; i++)//²é¿´ÊäÈë½øÀ´µÄÖµ
+	//for (int i = 0; i < filterData_length; i++)//æŸ¥çœ‹è¾“å…¥è¿›æ¥çš„å€¼
 	//{
 	//	Serial.print("Filter");
 	//	Serial.println(filterData[i]);
 	//	delay(5);
 	//}
-	for (int i = 0; i < filterData_length; i++)//ÅÅĞò£¬·½±ã¼ÆËã
+	for (int i = 0; i < filterData_length; i++)//æ’åºï¼Œæ–¹ä¾¿è®¡ç®—
 	{ 
 		float temp;
 		for (int j = i + 1; j < filterData_length; j++)
@@ -65,9 +65,9 @@ float Filter(float * filterData, int filterData_length)
 		}
 	}
 
-	for (int i = 0; i < filterData_length; i++)//Êä³öÅÅĞòµÄ½á¹û
+	for (int i = 0; i < filterData_length; i++)//è¾“å‡ºæ’åºçš„ç»“æœ
 	{
-		Serial.print("ÅÅĞò");
+		Serial.print("æ’åº");
 		Serial.println(filterData[i]);
 		delay(1);
 	}
@@ -76,18 +76,18 @@ float Filter(float * filterData, int filterData_length)
 	{
 		if (maximum < filterData[i])
 		{
-			maximum = filterData[i];//×î´óÖµ
+			maximum = filterData[i];//æœ€å¤§å€¼
 		}
 		if (minimum > filterData[i])
 		{
-			minimum = filterData[i];//×îĞ¡Öµ
+			minimum = filterData[i];//æœ€å°å€¼
 		}
-		sum = sum + filterData[i];//ºÍ
+		sum = sum + filterData[i];//å’Œ
 	}
-	average = sum / filterData_length;//Æ½¾ùÊı
-	nomaxmin_avr = (sum - maximum - minimum) / (filterData_length - 2);//È¥µô×î´ó×îĞ¡µÄÆ½¾ùÊı
+	average = sum / filterData_length;//å¹³å‡æ•°
+	nomaxmin_avr = (sum - maximum - minimum) / (filterData_length - 2);//å»æ‰æœ€å¤§æœ€å°çš„å¹³å‡æ•°
 
-	if (filterData_length % 2 == 0)//µÃµ½ÖĞÎ»Êı
+	if (filterData_length % 2 == 0)//å¾—åˆ°ä¸­ä½æ•°
 	{
 		median = (filterData[filterData_length / 2 - 1] + filterData[filterData_length / 2]) / 2.0;
 	}
@@ -96,7 +96,7 @@ float Filter(float * filterData, int filterData_length)
 		median = filterData[filterData_length / 2];
 	}
 
-	//for (int i = 0; i < filterData_length; i++)//Î±ÖÚÊı¼ÆËã
+	//for (int i = 0; i < filterData_length; i++)//ä¼ªä¼—æ•°è®¡ç®—
 	//{
 	//	for (int j = i + 1; j < filterData_length; j++)
 	//	{
@@ -118,7 +118,7 @@ float Filter(float * filterData, int filterData_length)
 	//	count = 0;
 	//}
 
-	//ÇóÖÚÊı
+	//æ±‚ä¼—æ•°
 	for (int i = 0; i < filterData_length; i++)
 	{
 		/*for (int j = i + 1; j < filterData_length; j++)*/
@@ -132,16 +132,16 @@ float Filter(float * filterData, int filterData_length)
 		if (count > b_count)
 		{
 			b_count = count;
-			mode = filterData[i];//µÃµ½ÖÚÊı
+			mode = filterData[i];//å¾—åˆ°ä¼—æ•°
 
-			//----------ÕâÊÇ×ÔĞĞÌí¼ÓµÄÄÚÈİ£¬×÷ÎªË½ÓĞ¿âÊ¹ÓÃÇëÉ¾³ı¸Ã¿é-----------------------
-			if (count >= 4)//Èç¹ûÖÚÊıµÄÊıÁ¿´óÓÚ»òµÈÓÚ£¨Õû¸öÊı×éµÄÊıÁ¿/2£© -1£¬ÄÇÃ´ÂË²¨½á¹ûÎªÖÚÊı
+			//----------è¿™æ˜¯è‡ªè¡Œæ·»åŠ çš„å†…å®¹ï¼Œä½œä¸ºç§æœ‰åº“ä½¿ç”¨è¯·åˆ é™¤è¯¥å—-----------------------
+			if (count >= 4)//å¦‚æœä¼—æ•°çš„æ•°é‡å¤§äºæˆ–ç­‰äºï¼ˆæ•´ä¸ªæ•°ç»„çš„æ•°é‡/2ï¼‰ -1ï¼Œé‚£ä¹ˆæ»¤æ³¢ç»“æœä¸ºä¼—æ•°
 			{
 				filter_result = mode;
 			}
-			else//Èç¹ûÖÚÊı²»Âú×ãÉÏ·½Ìõ¼ş£¬ÔòÂË²¨½á¹ûÎªÈ¥µôÒ»¸ö×î´óÖµÒÔ¼°Ò»¸ö×îĞ¡ÖµµÄÆ½¾ùÖµ
+			else//å¦‚æœä¼—æ•°ä¸æ»¡è¶³ä¸Šæ–¹æ¡ä»¶ï¼Œåˆ™æ»¤æ³¢ç»“æœä¸ºå»æ‰ä¸€ä¸ªæœ€å¤§å€¼ä»¥åŠä¸€ä¸ªæœ€å°å€¼çš„å¹³å‡å€¼
 			{
-				mode = count;//´ú±íÎŞÖµ
+				mode = count;//ä»£è¡¨æ— å€¼
 				filter_result = nomaxmin_avr;
 			}
 			//----------------------------------------------------------------------
@@ -149,36 +149,36 @@ float Filter(float * filterData, int filterData_length)
 		count = 0;
 		a_count = 0;
 	}
-//---------------ÒÔÉÏÎªÂË²¨¿âµÄÄÚÈİ£¬ÏÂÃæÎª×ÔĞĞĞèÒªÔö¼ÓµÄÄÚÈİ-------------------------------------------------------------
+//---------------ä»¥ä¸Šä¸ºæ»¤æ³¢åº“çš„å†…å®¹ï¼Œä¸‹é¢ä¸ºè‡ªè¡Œéœ€è¦å¢åŠ çš„å†…å®¹-------------------------------------------------------------
 
-	//if (count >= (filterData_length / 2) - 1)//Èç¹ûÖÚÊıµÄÊıÁ¿´óÓÚ»òµÈÓÚ£¨Õû¸öÊı×éµÄÊıÁ¿/2£© -1£¬ÄÇÃ´ÂË²¨½á¹ûÎªÖÚÊı
+	//if (count >= (filterData_length / 2) - 1)//å¦‚æœä¼—æ•°çš„æ•°é‡å¤§äºæˆ–ç­‰äºï¼ˆæ•´ä¸ªæ•°ç»„çš„æ•°é‡/2ï¼‰ -1ï¼Œé‚£ä¹ˆæ»¤æ³¢ç»“æœä¸ºä¼—æ•°
 	//{
 	//	filter_result = mode;
 	//}
-	//else//Èç¹ûÖÚÊı²»Âú×ãÉÏ·½Ìõ¼ş£¬ÔòÂË²¨½á¹ûÎªÈ¥µôÒ»¸ö×î´óÖµÒÔ¼°Ò»¸ö×îĞ¡ÖµµÄÆ½¾ùÖµ
+	//else//å¦‚æœä¼—æ•°ä¸æ»¡è¶³ä¸Šæ–¹æ¡ä»¶ï¼Œåˆ™æ»¤æ³¢ç»“æœä¸ºå»æ‰ä¸€ä¸ªæœ€å¤§å€¼ä»¥åŠä¸€ä¸ªæœ€å°å€¼çš„å¹³å‡å€¼
 	//{
-	//	mode = 1.11;//´ú±íÎŞÖµ
+	//	mode = 1.11;//ä»£è¡¨æ— å€¼
 	//	filter_result = nomaxmin_avr;
 	//}
 
 
 
 
-	//Êä³öËùÓĞµÄ½á¹û
-	Serial.print("maximum = ");//×î´óÖµ
+	//è¾“å‡ºæ‰€æœ‰çš„ç»“æœ
+	Serial.print("maximum = ");//æœ€å¤§å€¼
 	Serial.println(maximum);
-	Serial.print("minimum = ");//×îĞ¡Öµ
+	Serial.print("minimum = ");//æœ€å°å€¼
 	Serial.println(minimum);
-	Serial.print("mode = ");//ÖÚÊı
+	Serial.print("mode = ");//ä¼—æ•°
 	Serial.println(mode);
-	Serial.print("median = ");//ÖĞÎ»Êı
+	Serial.print("median = ");//ä¸­ä½æ•°
 	Serial.println(median);
-	Serial.print("sum = ");//ºÍ
+	Serial.print("sum = ");//å’Œ
 	Serial.println(sum);
-	Serial.print("nomaxmin_avr = ");//È¥µôÒ»¸ö×î´óÖµÒÔ¼°×îĞ¡ÖµµÄÆ½¾ùÖµ
+	Serial.print("nomaxmin_avr = ");//å»æ‰ä¸€ä¸ªæœ€å¤§å€¼ä»¥åŠæœ€å°å€¼çš„å¹³å‡å€¼
 	Serial.println(nomaxmin_avr);
 
-	//½«filter_resultµÄ½á¹ûµÈÓÚÈÎÒâÒ»¸öÇó³öÀ´µÄÖµ
+	//å°†filter_resultçš„ç»“æœç­‰äºä»»æ„ä¸€ä¸ªæ±‚å‡ºæ¥çš„å€¼
 	//filter_result = nomaxmin_avr;
 
 
@@ -186,38 +186,38 @@ float Filter(float * filterData, int filterData_length)
 }
 
 
-//º¯ Êı Ãû£ºFilter() 
-//¹¦ÄÜÃèÊö£ºÂË²¨º¯Êı
-//º¯ÊıËµÃ÷£º¶ÔÊäÈëµÄ¶à¸öÕûĞÍÊı£¬½øĞĞÂË²¨²Ù×÷£¬
-//µ÷ÓÃº¯Êı£º
-//È«¾Ö±äÁ¿£º
-//Êä Èë£ºÕûĞÍÊı×éÒÔ¼°Êı×é³¤¶È
-//·µ »Ø£ºÕûĞÍÊıµÄÂË²¨Öµ
+//å‡½ æ•° åï¼šFilter() 
+//åŠŸèƒ½æè¿°ï¼šæ»¤æ³¢å‡½æ•°
+//å‡½æ•°è¯´æ˜ï¼šå¯¹è¾“å…¥çš„å¤šä¸ªæ•´å‹æ•°ï¼Œè¿›è¡Œæ»¤æ³¢æ“ä½œï¼Œ
+//è°ƒç”¨å‡½æ•°ï¼š
+//å…¨å±€å˜é‡ï¼š
+//è¾“ å…¥ï¼šæ•´å‹æ•°ç»„ä»¥åŠæ•°ç»„é•¿åº¦
+//è¿” å›ï¼šæ•´å‹æ•°çš„æ»¤æ³¢å€¼
 /////////////////////////////////////////////////////////////////////
 float Filter(int* filterData, int filterData_length)
 {
-	float average = 0.00;		//Æ½¾ùÖµ
-	float mode = 0.00;			//ÖÚÊı
-	float median = 0.00;		//ÖĞÎ»Êı
-	float maximum = 0.00;		//×î´óÖµ
-	float minimum = 999999.99;	//×îĞ¡Öµ
-	float sum = 0.00;			//ºÍ
-	float nomaxmin_avr = 0.00;	//È¥µô×î´ó×îĞ¡ÖµµÃÆ½¾ùÊı
-	float filter_result = 0.00;	//ÂË²¨½á¹û
+	float average = 0.00;		//å¹³å‡å€¼
+	float mode = 0.00;			//ä¼—æ•°
+	float median = 0.00;		//ä¸­ä½æ•°
+	float maximum = 0.00;		//æœ€å¤§å€¼
+	float minimum = 999999.99;	//æœ€å°å€¼
+	float sum = 0.00;			//å’Œ
+	float nomaxmin_avr = 0.00;	//å»æ‰æœ€å¤§æœ€å°å€¼å¾—å¹³å‡æ•°
+	float filter_result = 0.00;	//æ»¤æ³¢ç»“æœ
 
-	int temp = 0;				//Ò»¸öÍ°
-	int a_count = 0;			//µÚ¶ş¸öÍ°
-	int count = 0;				//¼ÆÊıÖµ
+	int temp = 0;				//ä¸€ä¸ªæ¡¶
+	int a_count = 0;			//ç¬¬äºŒä¸ªæ¡¶
+	int count = 0;				//è®¡æ•°å€¼
 	int b_count = 0;			//
 
 
-	//for (int i = 0; i < filterData_length; i++)//²é¿´ÊäÈë½øÀ´µÄÖµ
+	//for (int i = 0; i < filterData_length; i++)//æŸ¥çœ‹è¾“å…¥è¿›æ¥çš„å€¼
 	//{
 	//	Serial.print("Filter");
 	//	Serial.println(filterData[i]);
 	//	delay(5);
 	//}
-	for (int i = 0; i < filterData_length; i++)//ÅÅĞò£¬·½±ã¼ÆËã
+	for (int i = 0; i < filterData_length; i++)//æ’åºï¼Œæ–¹ä¾¿è®¡ç®—
 	{
 		float temp;
 		for (int j = i + 1; j < filterData_length; j++)
@@ -231,9 +231,9 @@ float Filter(int* filterData, int filterData_length)
 		}
 	}
 
-	for (int i = 0; i < filterData_length; i++)//Êä³öÅÅĞòµÄ½á¹û
+	for (int i = 0; i < filterData_length; i++)//è¾“å‡ºæ’åºçš„ç»“æœ
 	{
-		Serial.print("ÅÅĞò");
+		Serial.print("æ’åº");
 		Serial.println(filterData[i]);
 		delay(1);
 	}
@@ -242,18 +242,18 @@ float Filter(int* filterData, int filterData_length)
 	{
 		if (maximum < filterData[i])
 		{
-			maximum = filterData[i];//×î´óÖµ
+			maximum = filterData[i];//æœ€å¤§å€¼
 		}
 		if (minimum > filterData[i])
 		{
-			minimum = filterData[i];//×îĞ¡Öµ
+			minimum = filterData[i];//æœ€å°å€¼
 		}
-		sum = sum + filterData[i];//ºÍ
+		sum = sum + filterData[i];//å’Œ
 	}
-	average = sum / filterData_length;//Æ½¾ùÊı
-	nomaxmin_avr = (sum - maximum - minimum) / (filterData_length - 2);//È¥µô×î´ó×îĞ¡µÄÆ½¾ùÊı
+	average = sum / filterData_length;//å¹³å‡æ•°
+	nomaxmin_avr = (sum - maximum - minimum) / (filterData_length - 2);//å»æ‰æœ€å¤§æœ€å°çš„å¹³å‡æ•°
 
-	if (filterData_length % 2 == 0)//µÃµ½ÖĞÎ»Êı
+	if (filterData_length % 2 == 0)//å¾—åˆ°ä¸­ä½æ•°
 	{
 		median = (filterData[filterData_length / 2 - 1] + filterData[filterData_length / 2]) / 2.0;
 	}
@@ -262,7 +262,7 @@ float Filter(int* filterData, int filterData_length)
 		median = filterData[filterData_length / 2];
 	}
 
-	//for (int i = 0; i < filterData_length; i++)//Î±ÖÚÊı¼ÆËã
+	//for (int i = 0; i < filterData_length; i++)//ä¼ªä¼—æ•°è®¡ç®—
 	//{
 	//	for (int j = i + 1; j < filterData_length; j++)
 	//	{
@@ -284,7 +284,7 @@ float Filter(int* filterData, int filterData_length)
 	//	count = 0;
 	//}
 
-	//ÇóÖÚÊı
+	//æ±‚ä¼—æ•°
 	for (int i = 0; i < filterData_length; i++)
 	{
 		/*for (int j = i + 1; j < filterData_length; j++)*/
@@ -298,16 +298,16 @@ float Filter(int* filterData, int filterData_length)
 		if (count > b_count)
 		{
 			b_count = count;
-			mode = filterData[i];//µÃµ½ÖÚÊı
+			mode = filterData[i];//å¾—åˆ°ä¼—æ•°
 
-			//----------ÕâÊÇ×ÔĞĞÌí¼ÓµÄÄÚÈİ£¬×÷ÎªË½ÓĞ¿âÊ¹ÓÃÇëÉ¾³ı¸Ã¿é-----------------------
-			if (count >= 4)//Èç¹ûÖÚÊıµÄÊıÁ¿´óÓÚ»òµÈÓÚ£¨Õû¸öÊı×éµÄÊıÁ¿/2£© -1£¬ÄÇÃ´ÂË²¨½á¹ûÎªÖÚÊı
+			//----------è¿™æ˜¯è‡ªè¡Œæ·»åŠ çš„å†…å®¹ï¼Œä½œä¸ºç§æœ‰åº“ä½¿ç”¨è¯·åˆ é™¤è¯¥å—-----------------------
+			if (count >= 4)//å¦‚æœä¼—æ•°çš„æ•°é‡å¤§äºæˆ–ç­‰äºï¼ˆæ•´ä¸ªæ•°ç»„çš„æ•°é‡/2ï¼‰ -1ï¼Œé‚£ä¹ˆæ»¤æ³¢ç»“æœä¸ºä¼—æ•°
 			{
 				filter_result = mode;
 			}
-			else//Èç¹ûÖÚÊı²»Âú×ãÉÏ·½Ìõ¼ş£¬ÔòÂË²¨½á¹ûÎªÈ¥µôÒ»¸ö×î´óÖµÒÔ¼°Ò»¸ö×îĞ¡ÖµµÄÆ½¾ùÖµ
+			else//å¦‚æœä¼—æ•°ä¸æ»¡è¶³ä¸Šæ–¹æ¡ä»¶ï¼Œåˆ™æ»¤æ³¢ç»“æœä¸ºå»æ‰ä¸€ä¸ªæœ€å¤§å€¼ä»¥åŠä¸€ä¸ªæœ€å°å€¼çš„å¹³å‡å€¼
 			{
-				mode = count;//´ú±íÎŞÖµ
+				mode = count;//ä»£è¡¨æ— å€¼
 				filter_result = nomaxmin_avr;
 			}
 			//----------------------------------------------------------------------
@@ -315,36 +315,36 @@ float Filter(int* filterData, int filterData_length)
 		count = 0;
 		a_count = 0;
 	}
-	//---------------ÒÔÉÏÎªÂË²¨¿âµÄÄÚÈİ£¬ÏÂÃæÎª×ÔĞĞĞèÒªÔö¼ÓµÄÄÚÈİ-------------------------------------------------------------
+	//---------------ä»¥ä¸Šä¸ºæ»¤æ³¢åº“çš„å†…å®¹ï¼Œä¸‹é¢ä¸ºè‡ªè¡Œéœ€è¦å¢åŠ çš„å†…å®¹-------------------------------------------------------------
 
-		//if (count >= (filterData_length / 2) - 1)//Èç¹ûÖÚÊıµÄÊıÁ¿´óÓÚ»òµÈÓÚ£¨Õû¸öÊı×éµÄÊıÁ¿/2£© -1£¬ÄÇÃ´ÂË²¨½á¹ûÎªÖÚÊı
+		//if (count >= (filterData_length / 2) - 1)//å¦‚æœä¼—æ•°çš„æ•°é‡å¤§äºæˆ–ç­‰äºï¼ˆæ•´ä¸ªæ•°ç»„çš„æ•°é‡/2ï¼‰ -1ï¼Œé‚£ä¹ˆæ»¤æ³¢ç»“æœä¸ºä¼—æ•°
 		//{
 		//	filter_result = mode;
 		//}
-		//else//Èç¹ûÖÚÊı²»Âú×ãÉÏ·½Ìõ¼ş£¬ÔòÂË²¨½á¹ûÎªÈ¥µôÒ»¸ö×î´óÖµÒÔ¼°Ò»¸ö×îĞ¡ÖµµÄÆ½¾ùÖµ
+		//else//å¦‚æœä¼—æ•°ä¸æ»¡è¶³ä¸Šæ–¹æ¡ä»¶ï¼Œåˆ™æ»¤æ³¢ç»“æœä¸ºå»æ‰ä¸€ä¸ªæœ€å¤§å€¼ä»¥åŠä¸€ä¸ªæœ€å°å€¼çš„å¹³å‡å€¼
 		//{
-		//	mode = 1.11;//´ú±íÎŞÖµ
+		//	mode = 1.11;//ä»£è¡¨æ— å€¼
 		//	filter_result = nomaxmin_avr;
 		//}
 
 
 
 
-		//Êä³öËùÓĞµÄ½á¹û
-	Serial.print("maximum = ");//×î´óÖµ
+		//è¾“å‡ºæ‰€æœ‰çš„ç»“æœ
+	Serial.print("maximum = ");//æœ€å¤§å€¼
 	Serial.println(maximum);
-	Serial.print("minimum = ");//×îĞ¡Öµ
+	Serial.print("minimum = ");//æœ€å°å€¼
 	Serial.println(minimum);
-	Serial.print("mode = ");//ÖÚÊı
+	Serial.print("mode = ");//ä¼—æ•°
 	Serial.println(mode);
-	Serial.print("median = ");//ÖĞÎ»Êı
+	Serial.print("median = ");//ä¸­ä½æ•°
 	Serial.println(median);
-	Serial.print("sum = ");//ºÍ
+	Serial.print("sum = ");//å’Œ
 	Serial.println(sum);
-	Serial.print("nomaxmin_avr = ");//È¥µôÒ»¸ö×î´óÖµÒÔ¼°×îĞ¡ÖµµÄÆ½¾ùÖµ
+	Serial.print("nomaxmin_avr = ");//å»æ‰ä¸€ä¸ªæœ€å¤§å€¼ä»¥åŠæœ€å°å€¼çš„å¹³å‡å€¼
 	Serial.println(nomaxmin_avr);
 
-	//½«filter_resultµÄ½á¹ûµÈÓÚÈÎÒâÒ»¸öÇó³öÀ´µÄÖµ
+	//å°†filter_resultçš„ç»“æœç­‰äºä»»æ„ä¸€ä¸ªæ±‚å‡ºæ¥çš„å€¼
 	//filter_result = nomaxmin_avr;
 
 

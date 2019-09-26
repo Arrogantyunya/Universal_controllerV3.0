@@ -13,7 +13,7 @@
 
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
-#define DEBUG_LEVEL DEBUG_FAULT
+#define DEBUG_LEVEL DEBUG_NONE
 #define BOARD_generic_stm32f103r
 #define VECT_TAB_ADDR 0x8000000
 #define ERROR_LED_PORT GPIOB

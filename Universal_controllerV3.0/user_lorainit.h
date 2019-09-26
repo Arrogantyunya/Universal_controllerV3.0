@@ -1,36 +1,36 @@
-// user_lorainit.h
+ï»¿// user_lorainit.h
 
 #ifndef _USER_LORAINIT_h
 #define _USER_LORAINIT_h
 
 
 #if defined(ARDUINO) && ARDUINO >= 100
-#include <arduino.h>//ÒıÓÃ±ê×¼¿âµÄÍ·ÎÄ¼ş
+#include <arduino.h>//å¼•ç”¨æ ‡å‡†åº“çš„å¤´æ–‡ä»¶
 #else
 #include "WProgram.h"
 #endif
 
-#include "user_initialization.h"	//ÒıÓÃÍ·ÎÄ¼ş
+#include "user_initialization.h"	//å¼•ç”¨å¤´æ–‡ä»¶
 //#include ""
 
-//Òı½Å¶¨Òå
+//å¼•è„šå®šä¹‰
 
 
-//È«¾Öº¯ÊıÉùÃ÷
-int LORA_Initialization(void);//³õÊ¼»¯º¯Êı
-void LORA_Receive_information(void);//LORA½ÓÊÕº¯Êı
+//å…¨å±€å‡½æ•°å£°æ˜
+int LORA_Initialization(void);//åˆå§‹åŒ–å‡½æ•°
+void LORA_Receive_information(void);//LORAæ¥æ”¶å‡½æ•°
 String addr_write();
 
-//È«¾Ö±äÁ¿
+//å…¨å±€å˜é‡
 static unsigned char lora_data[200];
 static unsigned char lora_len = 0;
 static unsigned int lora_Completion_Degree = 0;
 
-static unsigned char Receive_Data[128];//ÓÃÀ´´æ·Å½ÓÊÕµ½µÄÊı¾İ
-static int Receive_Length = 0;//½ÓÊÕÊı¾İµÄ³¤¶È
-static int CRC_Check_num = 0x00;//CRCĞ£ÑéµÄÊıÖµ
+static unsigned char Receive_Data[128];//ç”¨æ¥å­˜æ”¾æ¥æ”¶åˆ°çš„æ•°æ®
+static int Receive_Length = 0;//æ¥æ”¶æ•°æ®çš„é•¿åº¦
+static int CRC_Check_num = 0x00;//CRCæ ¡éªŒçš„æ•°å€¼
 
-//Àà½á¹¹ÉùÃ÷
+//ç±»ç»“æ„å£°æ˜
 
 
 

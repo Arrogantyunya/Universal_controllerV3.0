@@ -1,27 +1,27 @@
-// user_initialization.h
+ï»¿// user_initialization.h
 /*
-*°æÈ¨
+*ç‰ˆæƒ
 *
-* ÎÄ¼şÃû³Æ:user_initialization.h
-* ÎÄ¼ş±êÊ¶:ÅäÖÃ¹ÜÀí¼Æ»®Êé
-* ÕªÒª:¶¨ÒåÁËĞèÒª³õÊ¼»¯µÄÒı½Å
+* æ–‡ä»¶åç§°:user_initialization.h
+* æ–‡ä»¶æ ‡è¯†:é…ç½®ç®¡ç†è®¡åˆ’ä¹¦
+* æ‘˜è¦:å®šä¹‰äº†éœ€è¦åˆå§‹åŒ–çš„å¼•è„š
 *
-* µ±Ç°°æ±¾:V1.0
-* ×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
-* ĞŞ¸ÄÕß:
-* ĞŞ¸ÄÈÕÆÚ:
+* å½“å‰ç‰ˆæœ¬:V1.0
+* ä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
+* ä¿®æ”¹è€…:
+* ä¿®æ”¹æ—¥æœŸ:
 *
-* È¡´ú°æ±¾:
-* Ô­×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
+* å–ä»£ç‰ˆæœ¬:
+* åŸä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
  */
 
 #ifndef _USER_INITIALIZATION_h
-#define _USER_INITIALIZATION_h	//·ÀÖ¹Í·ÎÄ¼şuser_initialization.h±»ÖØ¸´µ÷ÓÃ
+#define _USER_INITIALIZATION_h	//é˜²æ­¢å¤´æ–‡ä»¶user_initialization.hè¢«é‡å¤è°ƒç”¨
 
 #if defined(ARDUINO) && ARDUINO >= 100
-#include <Arduino.h>//ÒıÓÃ±ê×¼¿âµÄÍ·ÎÄ¼ş
+#include <Arduino.h>//å¼•ç”¨æ ‡å‡†åº“çš„å¤´æ–‡ä»¶
 #else
 #include "WProgram.h"
 #endif
@@ -32,40 +32,40 @@
 #include "i2c.h"
 
 
-#define debug			1		//debugÎª1½øÈë²âÊÔÄ£Ê½£¬Ã¿´ÎÖØÆôËùÓĞ±êÖ¾Î»¶¼ÇåÁã;Îª0½øÈëÕı³£Ê¹ÓÃÄ£Ê½£¬²»»áÇå¿Õ±êÖ¾Î»
-#define debug_crc		1		//debug_crcÎª1½øÈëCRC²»ĞèÒªĞ£ÑéµÄÄ£Ê½£¬½«CRCÎ»·¢ËÍD6½«Ğ£ÑéÍ¨¹ı£»Îª0Ê±ÎªÕı³£Ğ£ÑéCRC
-#define debug_print		1		//debug_printÎª1½øÈë²âÊÔÊä³öÄ£Ê½£¬½«»á´òÓ¡ĞÅÏ¢£»Îª0Ê±½«²»´òÓ¡Êä³ö
+#define debug			1		//debugä¸º1è¿›å…¥æµ‹è¯•æ¨¡å¼ï¼Œæ¯æ¬¡é‡å¯æ‰€æœ‰æ ‡å¿—ä½éƒ½æ¸…é›¶;ä¸º0è¿›å…¥æ­£å¸¸ä½¿ç”¨æ¨¡å¼ï¼Œä¸ä¼šæ¸…ç©ºæ ‡å¿—ä½
+#define debug_crc		1		//debug_crcä¸º1è¿›å…¥CRCä¸éœ€è¦æ ¡éªŒçš„æ¨¡å¼ï¼Œå°†CRCä½å‘é€D6å°†æ ¡éªŒé€šè¿‡ï¼›ä¸º0æ—¶ä¸ºæ­£å¸¸æ ¡éªŒCRC
+#define debug_print		1		//debug_printä¸º1è¿›å…¥æµ‹è¯•è¾“å‡ºæ¨¡å¼ï¼Œå°†ä¼šæ‰“å°ä¿¡æ¯ï¼›ä¸º0æ—¶å°†ä¸æ‰“å°è¾“å‡º
 
-#define LORA_reset		0		//LORA_resetÎª1½øÈëLORA²âÊÔ£¬Ã¿´ÎÖØÆôºóLORAµÄ±êÖ¾Î»¶¼ÇåÁã
-#define LORA_NET		0		//LORA_NETÎª0´ú±íloraµÄNETÎª½Úµã£¬Îª1´ú±íÎªÍø¹Ø,Îª0´ú±í½Úµã
+#define LORA_reset		0		//LORA_resetä¸º1è¿›å…¥LORAæµ‹è¯•ï¼Œæ¯æ¬¡é‡å¯åLORAçš„æ ‡å¿—ä½éƒ½æ¸…é›¶
+#define LORA_NET		0		//LORA_NETä¸º0ä»£è¡¨loraçš„NETä¸ºèŠ‚ç‚¹ï¼Œä¸º1ä»£è¡¨ä¸ºç½‘å…³,ä¸º0ä»£è¡¨èŠ‚ç‚¹
 
-#define AT24C01_bytes	127		//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C02_bytes	255		//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C04_bytes	511		//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C08_bytes	1023	//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C16_bytes	2047	//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C32_bytes	4095	//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C64_bytes	8191	//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C128_bytes	16383	//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
-#define AT24C256_bytes	32767	//´ú±í×î´óµÄ´æ´¢¿Õ¼ä
+#define AT24C01_bytes	127		//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C02_bytes	255		//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C04_bytes	511		//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C08_bytes	1023	//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C16_bytes	2047	//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C32_bytes	4095	//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C64_bytes	8191	//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C128_bytes	16383	//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
+#define AT24C256_bytes	32767	//ä»£è¡¨æœ€å¤§çš„å­˜å‚¨ç©ºé—´
 
 
 
- //Òı½Å¶¨Òå
-#define K1			PC0		//°´¼ü1
-#define K2			PC1		//°´¼ü2
-#define AO1			PC2		//Ä£ÄâÊä³ö1
-#define AO2			PC3		//Ä£ÄâÊä³ö2
-#define VIN1		PA0		//Ä£ÄâÊäÈë1
-#define VIN2		PA1		//Ä£ÄâÊäÈë2
+ //å¼•è„šå®šä¹‰
+#define K1			PC0		//æŒ‰é”®1
+#define K2			PC1		//æŒ‰é”®2
+#define AO1			PC2		//æ¨¡æ‹Ÿè¾“å‡º1
+#define AO2			PC3		//æ¨¡æ‹Ÿè¾“å‡º2
+#define VIN1		PA0		//æ¨¡æ‹Ÿè¾“å…¥1
+#define VIN2		PA1		//æ¨¡æ‹Ÿè¾“å…¥2
 #define TX_485		PA2		//485TX
 #define	RX_485		PA3		//485RX
-#define	DI1			PA6		//Êı×ÖÊäÈë1
-#define	DI2			PA7		//Êı×ÖÊäÈë2
-#define	DO1			PC4		//Êı×ÖÊä³ö1
-#define	DO2			PC5		//Êı×ÖÊä³ö2
-#define	KCZJ1		PB0		//¼ÌµçÆ÷1
-#define	KCZJ2		PB1		//¼ÌµçÆ÷2
+#define	DI1			PA6		//æ•°å­—è¾“å…¥1
+#define	DI2			PA7		//æ•°å­—è¾“å…¥2
+#define	DO1			PC4		//æ•°å­—è¾“å‡º1
+#define	DO2			PC5		//æ•°å­—è¾“å‡º2
+#define	KCZJ1		PB0		//ç»§ç”µå™¨1
+#define	KCZJ2		PB1		//ç»§ç”µå™¨2
 #define	BOOT1		PB2		//boot1
 #define	LORA_RX		PB10	//LORA_TX
 #define	LORA_TX		PB11	//LORA_RX
@@ -75,32 +75,32 @@
 #define	LED1		PC9		//LED1
 #define	MCU_TX		PA9		//MCU_TX
 #define	MCU_RX		PA10	//MCU_RX
-#define	USBDM		PA11	//USB½Ó¿Ú
-#define	USBDP		PA12	//USB½Ó¿Ú
-#define	SWDIO		PA13	//³ÌĞòÏÂÔØ½Ó¿Ú
-#define SWCLK		PA14	//³ÌĞòÏÂÔØ½Ó¿Ú
-#define	RESETN		PC12	//LORAÄ£¿éRESETn
-#define	WAKE_UP		PD2		//LORAÄ£¿éWake_UP
-#define	AT_CMD		PB3		//LORAÄ£¿éAT_CMD
-#define	LORA_PWR	PB4		//LORAÄ£¿éLORA_PWR
-//#define	WP			PB5		//FLASHÄ£¿éWP
-//#define	EEPROM_SCL	PB6		//FLASHÄ£¿éEEPROM_SCL
-//#define	EEPROM_SDA	PB7		//FLASHÄ£¿éEEPROM_SDA
+#define	USBDM		PA11	//USBæ¥å£
+#define	USBDP		PA12	//USBæ¥å£
+#define	SWDIO		PA13	//ç¨‹åºä¸‹è½½æ¥å£
+#define SWCLK		PA14	//ç¨‹åºä¸‹è½½æ¥å£
+#define	RESETN		PC12	//LORAæ¨¡å—RESETn
+#define	WAKE_UP		PD2		//LORAæ¨¡å—Wake_UP
+#define	AT_CMD		PB3		//LORAæ¨¡å—AT_CMD
+#define	LORA_PWR	PB4		//LORAæ¨¡å—LORA_PWR
+//#define	WP			PB5		//FLASHæ¨¡å—WP
+//#define	EEPROM_SCL	PB6		//FLASHæ¨¡å—EEPROM_SCL
+//#define	EEPROM_SDA	PB7		//FLASHæ¨¡å—EEPROM_SDA
 #define	BOOT0		BOOT0	//BOOT0
 
 
-//È«¾Öº¯ÊıÉùÃ÷
-void Initialization(void);				//³õÊ¼»¯º¯Êı
-void Send_Data_Lamp(void);				//·¢ËÍÊı¾İµÆ
-void Receive_data_lamp(void);			//½ÓÊÕÊı¾İµÆ
-void Restore_actory_setting_lamp(void);	//»Ö¸´³ö³§ÉèÖÃµÆ
+//å…¨å±€å‡½æ•°å£°æ˜
+void Initialization(void);				//åˆå§‹åŒ–å‡½æ•°
+void Send_Data_Lamp(void);				//å‘é€æ•°æ®ç¯
+void Receive_data_lamp(void);			//æ¥æ”¶æ•°æ®ç¯
+void Restore_actory_setting_lamp(void);	//æ¢å¤å‡ºå‚è®¾ç½®ç¯
 
 
-//È«¾Ö±äÁ¿
-static unsigned char Receive_IsBroadcast = 0x00; //ÊÇ·ñ¹ã²¥Ö¸Áî
+//å…¨å±€å˜é‡
+static unsigned char Receive_IsBroadcast = 0x00; //æ˜¯å¦å¹¿æ’­æŒ‡ä»¤
 
 
-//Àà½á¹¹ÉùÃ÷
+//ç±»ç»“æ„å£°æ˜
 
 
 

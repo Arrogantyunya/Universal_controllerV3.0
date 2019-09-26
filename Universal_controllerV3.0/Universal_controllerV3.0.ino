@@ -1,9 +1,9 @@
-// Visual Micro is in vMicro>General>Tutorial Mode
+ï»¿// Visual Micro is in vMicro>General>Tutorial Mode
 // 
 /*
     Name:       Universal_controllerV3.0.ino
     Created:	2019/9/23 23:40:40
-    Author:     Áõ¼Ò»Ô
+    Author:     åˆ˜å®¶è¾‰
 */
 
 // Define User Types below here or use a .h file
@@ -34,33 +34,33 @@
 //#include "RTClock.h"
 //----------------------------------------------------------------------------------------------
 
-//È«¾Ö±äÁ¿
+//å…¨å±€å˜é‡
 //static unsigned long rtc_oldtime;
 //----------------------------------------------------------------------------------------------
 
 
 
-//º¯ Êı Ãû£ºsetup() 
-//¹¦ÄÜÃèÊö£ºÆğÊ¼´úÂë
-//º¯ÊıËµÃ÷£º
-//µ÷ÓÃº¯Êı£º
-//È«¾Ö±äÁ¿£º
-//Êä Èë£º
-//·µ »Ø£º
+//å‡½ æ•° åï¼šsetup() 
+//åŠŸèƒ½æè¿°ï¼šèµ·å§‹ä»£ç 
+//å‡½æ•°è¯´æ˜ï¼š
+//è°ƒç”¨å‡½æ•°ï¼š
+//å…¨å±€å˜é‡ï¼š
+//è¾“ å…¥ï¼š
+//è¿” å›ï¼š
 ///////////////////////////////////////////////////////
 void setup()
 {
-	Initialization();//³õÊ¼»¯º¯Êı
+	Initialization();//åˆå§‹åŒ–å‡½æ•°
 
-	/*Serial.println("³õÊ¼»¯Ö´ĞĞ½áÊø");*/
+	Serial.println("åˆå§‹åŒ–æ‰§è¡Œç»“æŸ");
 	Serial.println("End of Initialization Execution");
 
 	if (AT24CXX_ReadOneByte(0) == 0x01 && AT24CXX_ReadOneByte(1) == 0x01)
 	{
-		/*Serial.println("³õÊ¼»¯³ÌĞòÖ´ĞĞ³É¹¦£¡");*/
+		Serial.println("åˆå§‹åŒ–ç¨‹åºæ‰§è¡ŒæˆåŠŸï¼");
 		Serial.println("Successful execution of initializer!!!");
 
-		//³õÊ¼»¯Íê³É×´Ì¬µÆ1ºìÂÌ½»ÌæÉÁË¸5´Î
+		//åˆå§‹åŒ–å®ŒæˆçŠ¶æ€ç¯1çº¢ç»¿äº¤æ›¿é—ªçƒ5æ¬¡
 		for (size_t i = 0; i < 5; i++)
 		{
 			digitalWrite(LED1, HIGH);
@@ -73,51 +73,51 @@ void setup()
 			digitalWrite(LED2, LOW);
 		}
 
-		Button_Waiting_report();//°´¼üµÈ´ıÉÏ±¨º¯Êı
+		//Button_Waiting_report();//æŒ‰é”®ç­‰å¾…ä¸ŠæŠ¥å‡½æ•°
 	}
 	else
 	{
-		Initialization_exception();//³õÊ¼»¯Òì³£º¯Êı
+		Initialization_exception();//åˆå§‹åŒ–å¼‚å¸¸å‡½æ•°
 	}
 }
 
-//º¯ Êı Ãû£ºloop() 
-//¹¦ÄÜÃèÊö£ºÑ­»·Ö´ĞĞµÄ´úÂë
-//º¯ÊıËµÃ÷£ºÑ­»·Ö´ĞĞµÄ´úÂë
-//µ÷ÓÃº¯Êı£º
-//È«¾Ö±äÁ¿£º
-//Êä Èë£º
-//·µ »Ø£º
+//å‡½ æ•° åï¼šloop() 
+//åŠŸèƒ½æè¿°ï¼šå¾ªç¯æ‰§è¡Œçš„ä»£ç 
+//å‡½æ•°è¯´æ˜ï¼šå¾ªç¯æ‰§è¡Œçš„ä»£ç 
+//è°ƒç”¨å‡½æ•°ï¼š
+//å…¨å±€å˜é‡ï¼š
+//è¾“ å…¥ï¼š
+//è¿” å›ï¼š
 /////////////////////////////////////////////////////////////////////
 // Add the main program code into the continuous loop() function
 void loop()
 {
-	//RTC_request();//RTCÇëÇóº¯Êı
+	//RTC_request();//RTCè¯·æ±‚å‡½æ•°
 
-	RTC_Clock();//RTCÊ±ÖÓº¯Êı
+	//RTC_Clock();//RTCæ—¶é’Ÿå‡½æ•°
 
-	LORA_Receive_information();	//LORAµÄ½ÓÊÕº¯Êı
+	LORA_Receive_information();	//LORAçš„æ¥æ”¶å‡½æ•°
 
-	Automated_strategy();//×Ô¶¯²ßÂÔº¯Êı
+	//Automated_strategy();//è‡ªåŠ¨ç­–ç•¥å‡½æ•°
 
-	Automatic_execution_test();//×Ô¶¯Ö´ĞĞ²âÊÔº¯Êı
+	//Automatic_execution_test();//è‡ªåŠ¨æ‰§è¡Œæµ‹è¯•å‡½æ•°
 
-	forswitch();//Ö´ĞĞº¯Êı
+	//forswitch();//æ‰§è¡Œå‡½æ•°
 
-	//Timely_reporting();//¶¨Ê±ÉÏ±¨×´Ì¬º¯Êı
+	//Timely_reporting();//å®šæ—¶ä¸ŠæŠ¥çŠ¶æ€å‡½æ•°
 
-	Heartbeat();//ĞÄÌøº¯Êı
+	//Heartbeat();//å¿ƒè·³å‡½æ•°
 
-	Forced_Start_Relay();//Ç¿ÖÆÆô¶¯¼ÌµçÆ÷
+	Forced_Start_Relay();//å¼ºåˆ¶å¯åŠ¨ç»§ç”µå™¨
 
-	Restore_factory_settings();//»Ö¸´³ö³§ÉèÖÃº¯Êı
+	Restore_factory_settings();//æ¢å¤å‡ºå‚è®¾ç½®å‡½æ•°
 }
 
 
-//Ç¿ÖÆÆô¶¯¼ÌµçÆ÷
+//å¼ºåˆ¶å¯åŠ¨ç»§ç”µå™¨
 void Forced_Start_Relay(void)
 {
-	//ÕâÊÇÇ¿ÖÆÆô¶¯¼ÌµçÆ÷
+	//è¿™æ˜¯å¼ºåˆ¶å¯åŠ¨ç»§ç”µå™¨
 	if (digitalRead(K2) == LOW)
 	{
 		delay(500);
@@ -134,145 +134,74 @@ void Forced_Start_Relay(void)
 	}
 }
 
-void Timely_reporting(void)//¶¨Ê±ÉÏ±¨×´Ì¬º¯Êı
-{
-	if (millis() - Get_Delivery_oldtime() >= Delivery_time * 1000 && Get_Delivery_oldtime() > 0)
-	{
-		if (debug_print == 1)
-		{
-			Serial.println("¶¨Ê±×Ô¶¯ÉÏ±¨");
-			//delay(1000);
-		}
-		//½øĞĞ×´Ì¬µÄ»ØÖ´
-		Send_E021(Receive_IsBroadcast);
-		Send_E022(Receive_IsBroadcast);
-	}
-}
 
-void Heartbeat(void)//ĞÄÌøº¯Êı
-{
-	if (millis() - Get_HeartBeat_oldtime() >= Heartbeat_time * 1000 && Get_HeartBeat_oldtime() > 0)
-	{
-		if (debug_print == 1)
-		{
-			Serial.println("ĞÄÌøÉÏ±¨");
-			//delay(1000);
-		}
-		//½øĞĞĞÄÌøµÄ»ØÖ´
-		Send_E023(Receive_IsBroadcast);
-	}
-}
 
-void Restore_factory_settings(void)//»Ö¸´³ö³§ÉèÖÃº¯Êı
+void Restore_factory_settings(void)//æ¢å¤å‡ºå‚è®¾ç½®å‡½æ•°
 {
-	//ÕâÊÇ»Ö¸´Îª³ö³§ÉèÖÃ£¬ÇëÉ÷ÓÃ
+	//è¿™æ˜¯æ¢å¤ä¸ºå‡ºå‚è®¾ç½®ï¼Œè¯·æ…ç”¨
 	if (digitalRead(K1) == LOW)
 	{
 		delay(2000);
 		if (digitalRead(K1) == LOW)
 		{
 			////-------------------------------------------
-			////======²âÊÔÊ±ËùÓÃ´úÂë¿é£¬Êµ¼ÊÊ¹ÓÃÇë×¢ÊÍ=====
-			////½«ËùÓĞµÄ±êÖ¾Î»¶¼ÇåÎª0
-			//AT24CXX_WriteOneByte(0, 0x00);//lora³õÊ¼»¯µÄ±êÖ¾Î»
-			//AT24CXX_WriteOneByte(1, 0x00);//EEPROMÉèÖÃµÄ±êÖ¾Î»
-			//AT24CXX_WriteOneByte(2, 0x00);//ÉêºÅµÄ±êÖ¾Î»
-			//AT24CXX_WriteOneByte(13, 0x00);//×Ô¶¯²ßÂÔµÄ±êÖ¾Î»
+			////======æµ‹è¯•æ—¶æ‰€ç”¨ä»£ç å—ï¼Œå®é™…ä½¿ç”¨è¯·æ³¨é‡Š=====
+			////å°†æ‰€æœ‰çš„æ ‡å¿—ä½éƒ½æ¸…ä¸º0
+			//AT24CXX_WriteOneByte(0, 0x00);//loraåˆå§‹åŒ–çš„æ ‡å¿—ä½
+			//AT24CXX_WriteOneByte(1, 0x00);//EEPROMè®¾ç½®çš„æ ‡å¿—ä½
+			//AT24CXX_WriteOneByte(2, 0x00);//ç”³å·çš„æ ‡å¿—ä½
+			//AT24CXX_WriteOneByte(13, 0x00);//è‡ªåŠ¨ç­–ç•¥çš„æ ‡å¿—ä½
 			////-------------------------------------------
-			//Serial.println("¿ªÊ¼½øĞĞ»Ö¸´³ö³§ÉèÖÃ");
+			//Serial.println("å¼€å§‹è¿›è¡Œæ¢å¤å‡ºå‚è®¾ç½®");
 
-			//Initialization();//ÖØĞÂ½øĞĞ³õÊ¼»¯µÄÉèÖÃ
-			//setup();//ÖØĞÂ½øÈësetup()½øĞĞÉêºÅ
+			//Initialization();//é‡æ–°è¿›è¡Œåˆå§‹åŒ–çš„è®¾ç½®
+			//setup();//é‡æ–°è¿›å…¥setup()è¿›è¡Œç”³å·
 
 
-			//½øÈëE011º¯ÊıÉÏ±¨ÇëÇóµ±Ç°²ÎÊı
-			Send_E011(Receive_IsBroadcast);//ÕâÀïµÄReceive_IsBroadcastÊÇ·ñÓĞÖµ£¿
+			//è¿›å…¥E011å‡½æ•°ä¸ŠæŠ¥è¯·æ±‚å½“å‰å‚æ•°
+			Send_E011(Receive_IsBroadcast);//è¿™é‡Œçš„Receive_IsBroadcastæ˜¯å¦æœ‰å€¼ï¼Ÿ
 		}
 	}
 }
 
-void Initialization_exception(void)//³õÊ¼»¯Òì³£º¯Êı
+void Initialization_exception(void)//åˆå§‹åŒ–å¼‚å¸¸å‡½æ•°
 {
 	while (1)
 	{
 		digitalWrite(LED1, HIGH);
-		//Serial.println("³õÊ¼»¯³ÌĞòÖ´ĞĞÊ§°Ü");
+		Serial.println("åˆå§‹åŒ–ç¨‹åºæ‰§è¡Œå¤±è´¥");
 		Serial.println("Initializer failed to execute!");
 		delay(2000);
 	}
 }
 
-void Button_Waiting_report(void)//°´¼üµÈ´ıÉÏ±¨º¯Êı
+void Button_Waiting_report(void)//æŒ‰é”®ç­‰å¾…ä¸ŠæŠ¥å‡½æ•°
 {
-	while (AT24CXX_ReadOneByte(2) == 0x00)//Register_OK_flag	ÒÑ¾­Íê³ÉÉêºÅµÄ±êÖ¾Î»
+	while (AT24CXX_ReadOneByte(2) == 0x00)//Register_OK_flag	å·²ç»å®Œæˆç”³å·çš„æ ‡å¿—ä½
 	{
-		//´ú±íÎ´ÉèÖÃ¹¤×÷²ÎÊı
-		//Serial.println("Î´ÉèÖÃ¹¤×÷²ÎÊı,ÈçĞèÒªÉèÖÃ¹¤×÷²ÎÊı£¬Çë³¤°´°´¼ü1");
+		//ä»£è¡¨æœªè®¾ç½®å·¥ä½œå‚æ•°
+		Serial.println("æœªè®¾ç½®å·¥ä½œå‚æ•°,å¦‚éœ€è¦è®¾ç½®å·¥ä½œå‚æ•°ï¼Œè¯·é•¿æŒ‰æŒ‰é”®1");
 		Serial.println("No working parameters are set.If you need to set working parameters, press the key 1 for a long time.");
 		digitalWrite(LED2, HIGH);
 		delay(1500);
-		//µÈ´ı°´¼ü1°´ÏÂ
+		//ç­‰å¾…æŒ‰é”®1æŒ‰ä¸‹
 		if (digitalRead(K1) == LOW)
 		{
 			delay(2000);
 			if (digitalRead(K1) == LOW)
 			{
 				digitalWrite(LED2, LOW);
-				//Serial.println("K1°´ÏÂ");
-				//Serial.println("±¾Éè±¸¿ªÊ¼ÉÏ±¨µ±Ç°µÄÉèÖÃ²ÎÊı");
+				Serial.println("K1æŒ‰ä¸‹");
+				Serial.println("æœ¬è®¾å¤‡å¼€å§‹ä¸ŠæŠ¥å½“å‰çš„è®¾ç½®å‚æ•°");
 				Serial.println("K1 press");
 				Serial.println("The device starts to report the current setting parameters...");
 
 				delay(250);
-				//½øÈëE011º¯ÊıÉÏ±¨ÇëÇóµ±Ç°²ÎÊı
-				Send_E011(Receive_IsBroadcast);//ÕâÀïµÄReceive_IsBroadcastÊÇ·ñÓĞÖµ£¿
+				//è¿›å…¥E011å‡½æ•°ä¸ŠæŠ¥è¯·æ±‚å½“å‰å‚æ•°
+				Send_E011(Receive_IsBroadcast);//è¿™é‡Œçš„Receive_IsBroadcastæ˜¯å¦æœ‰å€¼ï¼Ÿ
 				AT24CXX_WriteOneByte(2, 0X01);
 			}
 		}
-	}
-}
-
-void RTC_request(void)//RTCÊ±¼äÇëÇóº¯Êı
-{
-	if (Get_RTC_Flag() == 0x00)//RTC_Flag	RTCÊ±¼äÊÇ·ñÓµÓĞµÄ±êÖ¾
-	{
-		int RTC_Wait_time = 5;
-		unsigned long RTCtime_old;
-
-		//´ú±íÃ»ÓĞRTCÊ±¼ä
-		Serial.println("RTCÊ±¼äÎ´ÉèÖÃ,µÈ´ı·şÎñÆ÷ÉèÖÃRTCÊ±¼ä...");
-
-		//½øĞĞRTCÊ±¼äµÄÇëÇó
-		Send_E024(Receive_IsBroadcast);
-
-		RTCtime_old = millis();
-		while (millis() - RTCtime_old <= RTC_Wait_time * 1000)
-		{
-			LORA_Receive_information();	//LORAµÄ½ÓÊÕº¯Êı
-
-			//Automated_strategy();//×Ô¶¯²ßÂÔº¯Êı
-
-			//forswitch();//Ö´ĞĞº¯Êı
-
-			//Timely_reporting();//¶¨Ê±ÉÏ±¨×´Ì¬º¯Êı
-
-			//Heartbeat();//ĞÄÌøº¯Êı
-
-			Forced_Start_Relay();//Ç¿ÖÆÆô¶¯¼ÌµçÆ÷
-
-			Restore_factory_settings();//»Ö¸´³ö³§ÉèÖÃº¯Êı
-		}
-	}
-	else
-	{
-		/*if (debug == 1)
-		{
-			if (debug_print == 1)
-			{
-				Serial.println("RTCÊ±¼äÒÑ¾­ÉèÖÃÍê³É");
-			}
-			delay(1500);
-		}*/
 	}
 }
 

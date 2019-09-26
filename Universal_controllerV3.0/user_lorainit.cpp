@@ -1,21 +1,21 @@
-//user_lorainit.cpp
+ï»¿//user_lorainit.cpp
 /*
-*°æÈ¨
+*ç‰ˆæƒ
 *
-* ÎÄ¼şÃû³Æ:user_lorainit.cpp
-* ÎÄ¼ş±êÊ¶:ÅäÖÃ¹ÜÀí¼Æ»®Êé
-* ÕªÒª:
+* æ–‡ä»¶åç§°:user_lorainit.cpp
+* æ–‡ä»¶æ ‡è¯†:é…ç½®ç®¡ç†è®¡åˆ’ä¹¦
+* æ‘˜è¦:
 *
-* µ±Ç°°æ±¾:V2.0
-* ×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:2019-8-13
-* ĞŞ¸ÄÕß:Áõ¼Ò»Ô
-* ĞŞ¸ÄÈÕÆÚ:2019-8-13
-* ĞŞ¸Ä:ÉèÖÃÁË×é²¥µØÖ·£¬È»ºóÔö¼ÓÁË¶ÁÈ¡ADDRµÄµØÖ·ÖØĞÂĞ´ÈëADDR£¬ÓÅ»¯ÁËÔËĞĞÂß¼­
+* å½“å‰ç‰ˆæœ¬:V2.0
+* ä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:2019-8-13
+* ä¿®æ”¹è€…:åˆ˜å®¶è¾‰
+* ä¿®æ”¹æ—¥æœŸ:2019-8-13
+* ä¿®æ”¹:è®¾ç½®äº†ç»„æ’­åœ°å€ï¼Œç„¶åå¢åŠ äº†è¯»å–ADDRçš„åœ°å€é‡æ–°å†™å…¥ADDRï¼Œä¼˜åŒ–äº†è¿è¡Œé€»è¾‘
 *
-* È¡´ú°æ±¾:V1.0
-* Ô­×÷Õß:Áõ¼Ò»Ô
-* Íê³ÉÈÕÆÚ:
+* å–ä»£ç‰ˆæœ¬:V1.0
+* åŸä½œè€…:åˆ˜å®¶è¾‰
+* å®Œæˆæ—¥æœŸ:
 */
 
 #include "user_lorainit.h"
@@ -33,34 +33,34 @@
 #include "user_HEXtoDEC.h"
 
 
-//º¯ Êı Ãû£ºLORA_Initialization() 
-//¹¦ÄÜÃèÊö£º
-//º¯ÊıËµÃ÷£ºLORA³õÊ¼»¯µÄº¯Êı
-//µ÷ÓÃº¯Êı£º
-//È«¾Ö±äÁ¿£º
-//Êä Èë£º
-//·µ »Ø£º
+//å‡½ æ•° åï¼šLORA_Initialization() 
+//åŠŸèƒ½æè¿°ï¼š
+//å‡½æ•°è¯´æ˜ï¼šLORAåˆå§‹åŒ–çš„å‡½æ•°
+//è°ƒç”¨å‡½æ•°ï¼š
+//å…¨å±€å˜é‡ï¼š
+//è¾“ å…¥ï¼š
+//è¿” å›ï¼š
 /////////////////////////////////////////////////////////////////////
-int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
+int LORA_Initialization()//LORAåˆå§‹åŒ–å‡½æ•°
 {
-	//¶ÔÎ´ÉèÖÃ¹ıµÄLORA½øĞĞÉèÖÃ
-	//¸ü¸ÄTFREQ£¬RFREQ¡¢TSF£¬RSF
+	//å¯¹æœªè®¾ç½®è¿‡çš„LORAè¿›è¡Œè®¾ç½®
+	//æ›´æ”¹TFREQï¼ŒRFREQã€TSFï¼ŒRSF
 
-	//ÏÈÉèÖÃLORAÒı½ÅµÄ³õÊ¼»¯
-	// digitalWrite(LORA_PWR,HIGH);			//¿ªÆôLORAµÄµçÔ´
-	// digitalWrite(RESETN,HIGH);			//·ÀÖ¹LORA½øĞĞ¸´Î»
-	// digitalWrite(AT_CMD,LOW);			//½«LORAÉèÖÃÎªÍ¸´«
+	//å…ˆè®¾ç½®LORAå¼•è„šçš„åˆå§‹åŒ–
+	// digitalWrite(LORA_PWR,HIGH);			//å¼€å¯LORAçš„ç”µæº
+	// digitalWrite(RESETN,HIGH);			//é˜²æ­¢LORAè¿›è¡Œå¤ä½
+	// digitalWrite(AT_CMD,LOW);			//å°†LORAè®¾ç½®ä¸ºé€ä¼ 
 
 	if (debug_print == 1)
 	{
-		Serial.println("½øÈëLORA_Initializationº¯Êı");
+		Serial.println("è¿›å…¥LORA_Initializationå‡½æ•°");
 	}
 
 	Serial.println("M-HL9:LORA Setup Begin");
 	digitalWrite(AT_CMD, HIGH);
 	delay(500);
 
-	//ÏÈ²âÊÔATÖ¸ÁîÊÇ·ñOK
+	//å…ˆæµ‹è¯•ATæŒ‡ä»¤æ˜¯å¦OK
 	delay(100);
 	Serial3.print("AT\r\n");
 	Serial3.flush();
@@ -91,8 +91,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("AT Setup failed");
 		}
 	}
-	//È»ºóÉèÖÃNET
-	//00Îª	Node to Node;	01Îª	Node to Gateway
+	//ç„¶åè®¾ç½®NET
+	//00ä¸º	Node to Node;	01ä¸º	Node to Gateway
 	delay(100);
 	if (LORA_NET == 0)
 	{
@@ -131,7 +131,7 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("NET Setup failed");
 		}
 	}
-	//È»ºóÉèÖÃTFREQ¡¢RFREQ·¢ËÍÆµµãÒÔ¼°½ÓÊÕÆµµã
+	//ç„¶åè®¾ç½®TFREQã€RFREQå‘é€é¢‘ç‚¹ä»¥åŠæ¥æ”¶é¢‘ç‚¹
 	delay(100);
 	Serial3.print(String("AT+TFREQ=1C578DE0\r\n"));
 	Serial3.flush();
@@ -159,7 +159,7 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("TFREQ Setup failed");
 		}
 	}
-	//ÉèÖÃRRFREQ
+	//è®¾ç½®RRFREQ
 	delay(100);
 	Serial3.print("AT+RFREQ=1C03A180\r\n");
 	Serial3.flush();
@@ -186,8 +186,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("RFREQ Setup failed");
 		}
 	}
-	//ÉèÖÃ·¢ËÍ¹¦ÂÊ
-	//14Îª20dbm
+	//è®¾ç½®å‘é€åŠŸç‡
+	//14ä¸º20dbm
 	delay(100);
 	Serial3.print("AT+POW=14\r\n");
 	Serial3.flush();
@@ -214,8 +214,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("POW Setup failed");
 		}
 	}
-	//ÉèÖÃµ÷ÖÆ´ø¿í
-	//07Îª125KHZ
+	//è®¾ç½®è°ƒåˆ¶å¸¦å®½
+	//07ä¸º125KHZ
 	delay(100);
 	Serial3.print("AT+BW=07\r\n");
 	Serial3.flush();
@@ -242,8 +242,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("BW Setup failed");
 		}
 	}
-	//ÉèÖÃTSF·¢ËÍÀ©Æµ
-	//09´ú±í09
+	//è®¾ç½®TSFå‘é€æ‰©é¢‘
+	//09ä»£è¡¨09
 	delay(100);
 	Serial3.print("AT+TSF=09\r\n");
 	Serial3.flush();
@@ -271,8 +271,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃRSF½ÓÊÕÀ©Æµ
-	//09´ú±í09
+	//è®¾ç½®RSFæ¥æ”¶æ‰©é¢‘
+	//09ä»£è¡¨09
 	delay(100);
 	Serial3.print("AT+RSF=09\r\n");
 	Serial3.flush();
@@ -300,8 +300,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃCR±àÂëËÙÂÊ
-	//01´ú±í4/5
+	//è®¾ç½®CRç¼–ç é€Ÿç‡
+	//01ä»£è¡¨4/5
 	delay(100);
 	Serial3.print("AT+CR=01\r\n");
 	Serial3.flush();
@@ -329,8 +329,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃMODEµ÷ÖÆ·½Ê½
-	//01ÎªLORAµ÷ÖÆ·½Ê½
+	//è®¾ç½®MODEè°ƒåˆ¶æ–¹å¼
+	//01ä¸ºLORAè°ƒåˆ¶æ–¹å¼
 	delay(100);
 	Serial3.print("AT+MODE=01\r\n");
 	Serial3.flush();
@@ -358,8 +358,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃSYNCÍ¬²½×Ö
-	//12´ú±í0x12
+	//è®¾ç½®SYNCåŒæ­¥å­—
+	//12ä»£è¡¨0x12
 	delay(100);
 	Serial3.print("AT+SYNC=12\r\n");
 	Serial3.flush();
@@ -388,9 +388,9 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 	}
 
 	/*//-------------------------------------------------------
-	//ÕâÀïPREMÉèÖÃ²»ÁË£¬»Ø¸´ER00
-	//ÉèÖÃPREMÇ°µ¼Âë
-	//08´ú±íÄ¬ÈÏÖµ
+	//è¿™é‡ŒPREMè®¾ç½®ä¸äº†ï¼Œå›å¤ER00
+	//è®¾ç½®PREMå‰å¯¼ç 
+	//08ä»£è¡¨é»˜è®¤å€¼
 	Serial3.print("AT+PREM=08\r\n");
 	while(Serial3.available() > 0)
 	{
@@ -404,13 +404,13 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		delay(500);
 		if (lora_data[2] == 79 && lora_data[3] == 75)
 		{
-			Serial.println("ÊÇ·ñÉèÖÃ³É¹¦");
+			Serial.println("æ˜¯å¦è®¾ç½®æˆåŠŸ");
 		}
 	}
 	//-------------------------------------------------------*/
 
-	//ÉèÖÃCRCÓ²¼şCRC
-	//01´ú±íÓĞCRCĞ£Ñé
+	//è®¾ç½®CRCç¡¬ä»¶CRC
+	//01ä»£è¡¨æœ‰CRCæ ¡éªŒ
 	delay(100);
 	Serial3.print("AT+CRC=01\r\n");
 	Serial3.flush();
@@ -438,8 +438,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃTIQ·¢ËÍ·´×ª
-	//00Îª²»·´×ª
+	//è®¾ç½®TIQå‘é€åè½¬
+	//00ä¸ºä¸åè½¬
 	delay(100);
 	Serial3.print("AT+TIQ=00\r\n");
 	Serial3.flush();
@@ -467,8 +467,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃRIQ½ÓÊÕ·´×ª
-	//00Îª²»·´×ª
+	//è®¾ç½®RIQæ¥æ”¶åè½¬
+	//00ä¸ºä¸åè½¬
 	delay(100);
 	Serial3.print("AT+RIQ=00\r\n");
 	Serial3.flush();
@@ -496,8 +496,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃSEQÊı¾İ°ü±àºÅ¡¢ÉèÖÃIPÄ£¿éµØÖ·¹¦ÄÜ
-	//01Îª´øµØÖ·²»´ø°üĞò
+	//è®¾ç½®SEQæ•°æ®åŒ…ç¼–å·ã€è®¾ç½®IPæ¨¡å—åœ°å€åŠŸèƒ½
+	//01ä¸ºå¸¦åœ°å€ä¸å¸¦åŒ…åº
 	delay(100);
 	Serial3.print("AT+SIP=01\r\n");
 	Serial3.flush();
@@ -526,8 +526,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 	}
 
 	/*//-------------------------------------------------------
-	//ÉèÖÃ²»³É¹¦
-	//ÉèÖÃAESÄ£¿éAESÍ¨ĞÅ¼ÓÃÜ
+	//è®¾ç½®ä¸æˆåŠŸ
+	//è®¾ç½®AESæ¨¡å—AESé€šä¿¡åŠ å¯†
 	//
 	Serial3.print("AT+AES=00000000000000000000000000000000\r\n");
 	while(Serial3.available() > 0)
@@ -542,13 +542,13 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		delay(500);
 		if (lora_data[2] == 79 && lora_data[3] == 75)
 		{
-			Serial.println("ÊÇ·ñÉèÖÃ³É¹¦");
+			Serial.println("æ˜¯å¦è®¾ç½®æˆåŠŸ");
 		}
 	}
 	//-------------------------------------------------------*/
 
-	//ÉèÖÃACKÊı¾İ°üÓ¦´ğ¹¦ÄÜ
-	//00´ú±í²»Ó¦´ğ
+	//è®¾ç½®ACKæ•°æ®åŒ…åº”ç­”åŠŸèƒ½
+	//00ä»£è¡¨ä¸åº”ç­”
 	delay(100);
 	Serial3.print("AT+ACK=00\r\n");
 	Serial3.flush();
@@ -575,8 +575,8 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 			Serial.println("ACK Setup failed");
 		}
 	}
-	//ÉèÖÃLDRµÍËÙÂÊÓÅ»¯
-	//00´ú±íAUTO
+	//è®¾ç½®LDRä½é€Ÿç‡ä¼˜åŒ–
+	//00ä»£è¡¨AUTO
 	delay(100);
 	Serial3.print("AT+LDR=00\r\n");
 	Serial3.flush();
@@ -604,7 +604,7 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 		}
 	}
 
-	//ÉèÖÃMADDR×é²¥µØÖ·
+	//è®¾ç½®MADDRç»„æ’­åœ°å€
 	delay(100);
 	Serial3.print("AT+MADDR=71000000\r\n");
 	Serial3.flush();
@@ -637,7 +637,7 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 	}
 
 
-	//²éÑ¯
+	//æŸ¥è¯¢
 	delay(500);
 	Serial3.print("AT+TFREQ?\r\n");
 	Serial3.flush();
@@ -867,31 +867,31 @@ int LORA_Initialization()//LORA³õÊ¼»¯º¯Êı
 	delay(100);
 
 
-	digitalWrite(AT_CMD, LOW);		//½«LORAÉèÖÃÎªÍ¸´«
+	digitalWrite(AT_CMD, LOW);		//å°†LORAè®¾ç½®ä¸ºé€ä¼ 
 	delay(10);
 
 	if (lora_Completion_Degree == 18)
 	{
-		Serial.println("LORA³õÊ¼»¯Íê³É");
+		Serial.println("LORAåˆå§‹åŒ–å®Œæˆ");
 		Serial.println("LORA Initialization Setup completed");
 		AT24CXX_WriteOneByte(0, 0x01);
 
 		if (debug_print == 1)
 		{
-			Serial.println("½áÊøLORA_Initializationº¯Êı");
+			Serial.println("ç»“æŸLORA_Initializationå‡½æ•°");
 		}
 
 		return 1;
 	}
 	else
 	{
-		Serial.println("LORA³õÊ¼»¯Ê§°Ü");
+		Serial.println("LORAåˆå§‹åŒ–å¤±è´¥");
 		Serial.println("LORA Initialization Setup failed");
 		AT24CXX_WriteOneByte(0, 0x00);
 
 		if (debug_print == 1)
 		{
-			Serial.println("½áÊøLORA_Initializationº¯Êı");
+			Serial.println("ç»“æŸLORA_Initializationå‡½æ•°");
 		}
 
 		return 0;
@@ -910,10 +910,10 @@ String addr_write()
 	{
 		if (debug_print == 1)
 		{
-			//Serial.println(lora_data[i]);//Êä³öÖµ
+			//Serial.println(lora_data[i]);//è¾“å‡ºå€¼
 		}
 
-		//Èç¹ûÖµÔÚ0~9Ö®¼ä
+		//å¦‚æœå€¼åœ¨0~9ä¹‹é—´
 		if (lora_data[i] >= 48 && lora_data[i] <= 57)
 		{
 			x[i - 8] = lora_data[i] - 48;
@@ -958,7 +958,7 @@ String addr_write()
 				y[i - 8] = String(9, HEX);
 			}
 		}
-		//Èç¹ûÖµÔÚA~FÖ®¼ä
+		//å¦‚æœå€¼åœ¨A~Fä¹‹é—´
 		else if (lora_data[i] >= 65 && lora_data[i] <= 70)
 		{
 			x[i - 8] = lora_data[i] - 55;
@@ -999,7 +999,7 @@ String addr_write()
 
 	for (size_t i = 0; i < 8; i++)
 	{
-		addr_data.concat(String(y[i]));//Á¬½Ó×Ö·û´®
+		addr_data.concat(String(y[i]));//è¿æ¥å­—ç¬¦ä¸²
 		if (debug_print == 1)
 		{
 			Serial.println(String(y[i]));
@@ -1010,7 +1010,7 @@ String addr_write()
 	{
 		Serial.println("-------");
 	}
-	addr_data.toUpperCase();//´óĞ´×ª»»
+	addr_data.toUpperCase();//å¤§å†™è½¬æ¢
 	if (debug_print == 1)
 	{
 		Serial.println(addr_data);
@@ -1033,7 +1033,7 @@ String addr_write()
 	//	Serial.println(_addr_data,HEX);
 	//	addr_data = String(_addr_data, HEX);
 	//}
-	//addr_data.toUpperCase();//´óĞ´×ª»»
+	//addr_data.toUpperCase();//å¤§å†™è½¬æ¢
 	//Serial.println(addr_data);
 
 	//addr_data = String("18240E0C");
@@ -1041,18 +1041,18 @@ String addr_write()
 	return addr_data;
 }
 
-//º¯ Êı Ãû£ºLORA_Receive_information() 
-//¹¦ÄÜÃèÊö£º¸ºÔğ½ÓÊÕLORA½ÓÊÕµ½µÄĞÅÏ¢È»ºó´«¸øJudgement_function()
-//º¯ÊıËµÃ÷£º
-//µ÷ÓÃº¯Êı£ºJudgement_function()
-//È«¾Ö±äÁ¿£º
-//Êä Èë£º
-//·µ »Ø£º
+//å‡½ æ•° åï¼šLORA_Receive_information() 
+//åŠŸèƒ½æè¿°ï¼šè´Ÿè´£æ¥æ”¶LORAæ¥æ”¶åˆ°çš„ä¿¡æ¯ç„¶åä¼ ç»™Judgement_function()
+//å‡½æ•°è¯´æ˜ï¼š
+//è°ƒç”¨å‡½æ•°ï¼šJudgement_function()
+//å…¨å±€å˜é‡ï¼š
+//è¾“ å…¥ï¼š
+//è¿” å›ï¼š
 /////////////////////////////////////////////////////////////////////
 void LORA_Receive_information(void)
 {
 	//do {
-	//		while (Serial3.available() > 0)//½ÓÊÕ´®¿ÚÊÕµ½µÄÊı¾İ
+	//		while (Serial3.available() > 0)//æ¥æ”¶ä¸²å£æ”¶åˆ°çš„æ•°æ®
 	//		{
 	//			if (Receive_Length >= 200) break;
 	//			Receive_Data[Receive_Length++] = Serial3.read();
@@ -1068,28 +1068,29 @@ void LORA_Receive_information(void)
 		delay(5000);
 	}*/
 	Receive_Length = 0;
-	while (Serial3.available() > 0)//½ÓÊÕ´®¿ÚÊÕµ½µÄÊı¾İ
+	while (Serial3.available() > 0)//æ¥æ”¶ä¸²å£æ”¶åˆ°çš„æ•°æ®
 	{
 		if (Receive_Length >= 127) break;
 		Receive_Data[Receive_Length++] = Serial3.read();
-		/*Serial.print(Receive_Data[Receive_Length - 1], HEX);
-		Serial.print(" ");*/
+		Serial.print(Receive_Data[Receive_Length - 1], HEX);
+		Serial.print(" ");
 		delay(5);
 	}
 	if (Receive_Length > 0)
 	{
-		//Serial.write(Receive_Data,Receive_Length);//·¢16½øÖÆ£¬×Ô¶¯×ª³ÉASCIIÂë
-		//Judgement_Length = 0;//ÊÕµ½ĞÂÏûÏ¢Çå¿ÕÅĞ¶ÏÊı×éµÄ³¤¶ÈÖµ
-		Check_Length = 0;//ÊÕµ½ĞÂÏûÏ¢Çå¿ÕĞ£ÑéÊı×éµÄ³¤¶ÈÖµ
+		//Serial.write(Receive_Data,Receive_Length);//å‘16è¿›åˆ¶ï¼Œè‡ªåŠ¨è½¬æˆASCIIç 
+		//Judgement_Length = 0;//æ”¶åˆ°æ–°æ¶ˆæ¯æ¸…ç©ºåˆ¤æ–­æ•°ç»„çš„é•¿åº¦å€¼
+		Check_Length = 0;//æ”¶åˆ°æ–°æ¶ˆæ¯æ¸…ç©ºæ ¡éªŒæ•°ç»„çš„é•¿åº¦å€¼
 		Receive_data_lamp();
 		if (debug_print == 1)
 		{
-			Serial.print("Receive_Length = ");//Êä³ö½ÓÊÕµ½µÄÊı¾İ³¤¶È
+			Serial.println("");
+			Serial.print("Receive_Length = ");//è¾“å‡ºæ¥æ”¶åˆ°çš„æ•°æ®é•¿åº¦
 			Serial.println(Receive_Length);
 		}
 
 		//--------------------------------------------------------
-		//½«Receive_DataµÄÖµ´¦ÀíµÃµ½Check_Data
+		//å°†Receive_Dataçš„å€¼å¤„ç†å¾—åˆ°Check_Data
 		Check_Length = 0;
 		for (int i = 4; i < Receive_Length - 0x07; i++)
 		{
@@ -1101,10 +1102,10 @@ void LORA_Receive_information(void)
 			Check_Data[Check_Length] = Receive_Data[i];
 			if (debug_print == 1)
 			{
-				Serial.print("Check_Data ");
-				Serial.print(Check_Length);
-				Serial.print(" :");
-				Serial.println(Check_Data[Check_Length], HEX);
+				//Serial.print("Check_Data ");
+				//Serial.print(Check_Length);
+				//Serial.print(" :");
+				//Serial.println(Check_Data[Check_Length], HEX);
 			}
 			Check_Length++;
 			delay(5);
@@ -1118,22 +1119,22 @@ void LORA_Receive_information(void)
 			CRC_Check_num = GetCrc8(Check_Data, Check_Length);
 			if (debug_print == 1)
 			{
-				Serial.print("CRC8¼ÆËãµÄÖµCRC_Check_numÎª£º0x");
+				Serial.print("CRC8è®¡ç®—çš„å€¼CRC_Check_numä¸ºï¼š0x");
 				Serial.println(CRC_Check_num, HEX);
 			}
 		}
 
 		//--------------------------------------------------------
-		if (debug_crc == 1)
-		{
-			CRC_Check_num = 0xD6;//ÕâĞĞ´úÂëÊÇÎªÁË²»ÈÃÎÒÃ¿´Î¶¼¼ÆËãCRC£¬Êµ¼ÊÊ¹ÓÃÇë×¢ÊÍ
-		}
+		//if (debug_crc == 1)
+		//{
+		//	CRC_Check_num = 0xD6;//è¿™è¡Œä»£ç æ˜¯ä¸ºäº†ä¸è®©æˆ‘æ¯æ¬¡éƒ½è®¡ç®—CRCï¼Œå®é™…ä½¿ç”¨è¯·æ³¨é‡Š
+		//}
 		//--------------------------------------------------------
 
-		Judgement_function(Receive_Data, Receive_Length - 1, CRC_Check_num);//ÅĞ¶Ïº¯Êı
+		Judgement_function(Receive_Data, Receive_Length - 1, CRC_Check_num);//åˆ¤æ–­å‡½æ•°
 
-		Receive_Length = 0;	//½«Receive_LengthÇåÁã
-		Check_Length = 0;	//½«Check_LengthÇåÁã
+		Receive_Length = 0;	//å°†Receive_Lengthæ¸…é›¶
+		Check_Length = 0;	//å°†Check_Lengthæ¸…é›¶
 	}
 
 
@@ -1147,19 +1148,19 @@ void LORA_Receive_information(void)
 	//	LORA_RecData2 = LORA_RecData1;
 	//	Receive_data_lamp();
 	//	// void remove (index,count)
-	//	//indexÎª±ØÑ¡²ÎÊı£¬±íÊ¾´ÓÄÄÀï¿ªÊ¼É¾³ı£¬Ö»ÌîÕâÒ»¸ö²ÎÊı£¬»á½«×Ö·û´®´ÓË÷ÒıÖµ¿ªÊ¼Ò»Ö±µ½½áÎ²µÄËùÓĞ×Ö·ûÉ¾³ı
-	//	//µÚ¶ş¸ö²ÎÊıcount±íÊ¾É¾³ı¶àÉÙ¸ö×Ö·û
-	//	//×÷ÓÃµ½×Ö·û´®µÄ±¾Éí
+	//	//indexä¸ºå¿…é€‰å‚æ•°ï¼Œè¡¨ç¤ºä»å“ªé‡Œå¼€å§‹åˆ é™¤ï¼Œåªå¡«è¿™ä¸€ä¸ªå‚æ•°ï¼Œä¼šå°†å­—ç¬¦ä¸²ä»ç´¢å¼•å€¼å¼€å§‹ä¸€ç›´åˆ°ç»“å°¾çš„æ‰€æœ‰å­—ç¬¦åˆ é™¤
+	//	//ç¬¬äºŒä¸ªå‚æ•°countè¡¨ç¤ºåˆ é™¤å¤šå°‘ä¸ªå­—ç¬¦
+	//	//ä½œç”¨åˆ°å­—ç¬¦ä¸²çš„æœ¬èº«
 	//	LORA_RecData1.remove(0, LORA_RecData1.length());
-	//	Judgement_Length = 0;//ÊÕµ½ĞÂÏûÏ¢Çå¿ÕÅĞ¶ÏÊı×éµÄ³¤¶ÈÖµ
-	//	Check_Length = 0;//ÊÕµ½ĞÂÏûÏ¢Çå¿ÕĞ£ÑéÊı×éµÄ³¤¶ÈÖµ
+	//	Judgement_Length = 0;//æ”¶åˆ°æ–°æ¶ˆæ¯æ¸…ç©ºåˆ¤æ–­æ•°ç»„çš„é•¿åº¦å€¼
+	//	Check_Length = 0;//æ”¶åˆ°æ–°æ¶ˆæ¯æ¸…ç©ºæ ¡éªŒæ•°ç»„çš„é•¿åº¦å€¼
 
 	//	char const *c = LORA_RecData2.c_str();
 
 	//	if (debug_print == 1)
 	//	{
 	//		Serial.println(String("LORA_RecData2.length()= ") + String(LORA_RecData2.length()));
-	//		Serial.println("½ÓÊÕµ½µÄÊı¾İÎª£º");
+	//		Serial.println("æ¥æ”¶åˆ°çš„æ•°æ®ä¸ºï¼š");
 	//		//Serial.write(c);
 	//		//int shuzu_length = LORA_RecData2.length();
 	//		byte shuzu[50];
