@@ -94,7 +94,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A014");
 							}
-							//Receive_A014(Judgement_Data, Judgement_Length);
+							Receive_A014(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x15)//帧ID为A015
 						{

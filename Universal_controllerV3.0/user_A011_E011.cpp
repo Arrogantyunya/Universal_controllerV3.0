@@ -172,6 +172,67 @@ void Receive_A013(unsigned char* Judgement_Data, int Judgement_Length)
 	}
 }
 
+//函 数 名：Receive_A014() 
+//功能描述：A014的执行函数
+//函数说明：设置LORA主设备的区域以及SN以及子设备总路数
+//调用函数：
+//全局变量：
+//输 入：
+//返 回：
+/////////////////////////////////////////////////////////////////////
+void Receive_A014(unsigned char* Judgement_Data, int Judgement_Length)
+{
+	//--------------------------------------------------------
+//该区域为测试传输进Receive_A014函数的数据是否正确的测试代码块
+//需要测试时请取消注释
+	if (debug_print == 1)
+	{
+		Serial.println("进入Receive_A014函数");
+		for (int i = 0; i < Judgement_Length + 1; i++)
+		{
+			Serial.print("A014Judgement_Data ");
+			Serial.print(i);
+			Serial.print(" :");
+			Serial.println(Judgement_Data[i], HEX);
+			delay(1);
+		}
+		delay(200);
+		Serial.print("Judgement_Length = ");
+		Serial.println(Judgement_Length);
+	}
+	//--------------------------------------------------------
+	//判断区域
+	if (Judgement_Data[7] == AT24CXX_ReadOneByte(A_ZoneID))
+	{
+		// 防止数据冲突，增加延时随机函数
+		delay(random(0, 5000));
+
+		//是否广播指令
+		Receive_IsBroadcast = Judgement_Data[6];
+
+		//进行状态的回执
+		Send_E014(Receive_IsBroadcast);//各路数状态的回执
+		//Send_E022(Receive_IsBroadcast);//各路数时间的回执
+	}
+	else
+	{
+		//E020_status = Incorrect_information_error;
+		if (debug_print == 1)
+		{
+			Serial.println("区域信息不正确");
+			//Serial.println(String("E020_status = Incorrect_information_error") + String(E020_status));
+		}
+		//进行状态的回执
+		//Send_E020(Receive_IsBroadcast, E020_status);
+	}
+
+	if (debug_print == 1)
+	{
+		Serial.println("完成A014状态回执");
+		Serial.println("结束Receive_A014函数");
+	}
+}
+
 
 //函 数 名：Send_E011() 
 //功能描述：
@@ -357,6 +418,94 @@ unsigned char E011_init()
 	E011_FrameEnd4 = 0x0A;      //E011的帧尾4
 	E011_FrameEnd5 = 0x0D;      //E011的帧尾5
 	E011_FrameEnd6 = 0x0A;      //E011的帧尾6
+}
+
+unsigned char Send_E014(int Receive_IsBroadcast)
+{
+	E014_init();
+
+	E014_IsBroadcast = Receive_IsBroadcast;//E014的是否广播指令
+
+	E014[0] = E014_FrameHead;
+	E014[1] = E014_FrameId1;
+	E014[2] = E014_FrameId2;
+	E014[3] = E014_DataLen;
+	E014[4] = E014_DeviceTypeID1;
+	E014[5] = E014_DeviceTypeID2;
+	E014[6] = E014_IsBroadcast;
+	E014[7] = E014_ZoneId;
+	E014[8] = E014_digIn1;
+	E014[9] = E014_digIn2;
+	E014[10] = E014_digOut1;
+	E014[11] = E014_digOut2;
+	E014[12] = E014_anaIn1_1;
+	E014[13] = E014_anaIn1_2;
+	E014[14] = E014_anaIn1_3;
+	E014[15] = E014_anaIn2_1;
+	E014[16] = E014_anaIn2_2;
+	E014[17] = E014_anaIn2_3;
+	E014[18] = E014_anaOut1_1;
+	E014[19] = E014_anaOut1_2;
+	E014[20] = E014_anaOut1_3;
+	E014[21] = E014_anaOut2_1;
+	E014[22] = E014_anaOut2_2;
+	E014[23] = E014_anaOut2_3;
+	for (size_t i = 4; i <= E014_DataLen + 0x03; i++)
+	{
+		Check_Data[Check_Length] = E014[i];
+		// Check_Data[Check_Length] = 0x55;
+		if (debug_print == 1)
+		{
+			Serial.print("Check_Data ");
+			Serial.print(Check_Length);
+			Serial.print(" :");
+			Serial.println(Check_Data[Check_Length], HEX);
+		}
+		Check_Length++;
+		delay(1);
+	}
+	Serial.print("Check_Length = ");
+	Serial.println(Check_Length);
+
+	if (Check_Length > 0)
+	{
+		E014_CRC8 = GetCrc8(Check_Data, Check_Length);//得到CRC数据
+		if (debug_print == 1)
+		{
+			Serial.print("CRC8计算的值E014_CRC8 = 0x");
+			Serial.println(E014_CRC8, HEX);
+		}
+		Check_Length = 0;
+	}
+	E014[24] = E014_CRC8;
+	E014[25] = E014_FrameEnd1;
+	E014[26] = E014_FrameEnd2;
+	E014[27] = E014_FrameEnd3;
+	E014[28] = E014_FrameEnd4;
+	E014[29] = E014_FrameEnd5;
+	E014[30] = E014_FrameEnd6;
+
+	//该区域为串口查看E011回执的信息
+	if (debug_print == 1)
+	{
+		for (int i = 0; i < 31; i++)
+		{
+			Serial.print(i);
+			Serial.print("/");
+			Serial.println(E014[i], HEX);
+			delay(1);
+		}
+	}
+
+	Serial3.write(E014, 31);
+	Serial3.flush();
+	Send_Data_Lamp();//发送数据灯
+	return 0;
+}
+
+unsigned char E014_init()
+{
+	return 0;
 }
 
 //函 数 名：Send_E015() 
@@ -590,10 +739,20 @@ unsigned char SN_ZoneISOK(unsigned char* Judgement_Data, int Judgement_Length)
 	}
 	if (A013_Checknum == 10)
 	{
+		if (debug_print == 1)
+		{
+			Serial.println("SN_ZoneISOK");
+			Serial.println("SN与区域信息校验成功");
+		}
 		return 1;
 	}
 	else
 	{
+		if (debug_print == 1)
+		{
+			Serial.println("SN_ZoneISERROR");
+			Serial.println("SN与区域信息校验错误");
+		}
 		return 0;
 	}
 	//判断是否写入成功

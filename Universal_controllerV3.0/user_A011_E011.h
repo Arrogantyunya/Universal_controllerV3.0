@@ -226,6 +226,10 @@ static int E011_FrameEnd6 = 0x0A;		//E011的帧尾6
 static unsigned char E011_Check_Data[50];   //用来存放接收到的数据
 static int E011_Check_Length = 0;
 //--------------------------------------------------------------------
+
+//--------------------------------------------------------------------
+
+//--------------------------------------------------------------------
 static unsigned char E015[25];//用来存放E015发送出去的数组
 
 static int E015_FrameHead = 0xFE;		//E015的帧头
@@ -265,17 +269,16 @@ static int E015_FrameEnd5 = 0x0D;		//E015的帧尾5
 static int E015_FrameEnd6 = 0x0A;		//E015的帧尾6
 //--------------------------------------------------------------------
 
-//--------------------------------------------------------------------
-
-//--------------------------------------------------------------------
-
 
 
 //全局函数声明
 void Receive_A011(unsigned char* Judgement_Data, int Judgement_Length);  //A011函数
-void Receive_A013(unsigned char* Judgement_Data, int Judgement_Length);  //A011函数
+void Receive_A013(unsigned char* Judgement_Data, int Judgement_Length);  //A013函数
+void Receive_A014(unsigned char* Judgement_Data, int Judgement_Length);  //A014函数
 unsigned char Send_E011(int Receive_IsBroadcast);  //E011函数
 unsigned char E011_init();	//E011初始化函数
+unsigned char Send_E014(int Receive_IsBroadcast);		//E014函数
+unsigned char E014_init();	//E014初始化函数
 unsigned char Send_E015(int Receive_IsBroadcast, int E015_status);		//E015函数
 unsigned char E015_init();	//E015初始化函数
 unsigned char SN_ZoneISOK(unsigned char* Judgement_Data, int Judgement_Length);	//测试SN区域是否写入成功函数
