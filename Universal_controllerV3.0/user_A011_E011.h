@@ -228,7 +228,61 @@ static int E011_Check_Length = 0;
 //--------------------------------------------------------------------
 
 //--------------------------------------------------------------------
+static unsigned char E014[37];//用来存放E014发送出去的数组
 
+static unsigned char LORA_Re_Data[50];		//查询信号时接收的数组
+static int LORA_Re_Length = 0;				//查询信号时数组的长度
+
+static int E014_FrameHead = 0xFE;		//E014的帧头
+
+static int E014_FrameId1 = 0xE0;		//E014的帧ID1
+static int E014_FrameId2 = 0x14;		//E014的帧ID2
+
+static int E014_DataLen = 0x1A;			//E014的数据长度
+
+static int E014_DeviceTypeID1 = 0xC0;	//E014的设备类型1
+static int E014_DeviceTypeID2 = 0x02;	//E014的设备类型2
+
+static int E014_IsBroadcast = 0x00;		//E014的是否广播指令
+
+static int E014_ZoneId = 0x00;			//E014的区域
+
+static int E014_channel = 0x00;			//E014的子设备路数
+
+static int E014_Status = 0x00;			//E014的状态值被声明成了枚举
+
+static int E014_Vol1 = 0x00;
+static int E014_Vol2 = 0x00;
+
+static int E014_Rssi = 0x00;
+
+static int E014_Csq = 0x00;
+
+static int E014_Allocate1 = 0x00;		//E014的Allocate1
+static int E014_Allocate2 = 0x00;		//E014的Allocate2
+static int E014_Allocate3 = 0x00;		//E014的Allocate3
+static int E014_Allocate4 = 0x00;		//E014的Allocate4
+static int E014_Allocate5 = 0x00;		//E014的Allocate5
+static int E014_Allocate6 = 0x00;		//E014的Allocate6
+static int E014_Allocate7 = 0x00;		//E014的Allocate7
+static int E014_Allocate8 = 0x00;		//E014的Allocate8
+static int E014_Allocate9 = 0x00;		//E014的Allocate9
+static int E014_Allocate10 = 0x00;		//E014的Allocate10
+static int E014_Allocate11 = 0x00;		//E014的Allocate11
+static int E014_Allocate12 = 0x00;		//E014的Allocate12
+static int E014_Allocate13 = 0x00;		//E014的Allocate13
+static int E014_Allocate14 = 0x00;		//E014的Allocate14
+static int E014_Allocate15 = 0x00;		//E014的Allocate15
+static int E014_Allocate16 = 0x00;		//E014的Allocate16
+
+static int E014_CRC8 = 0x00;			//E014的CRC8校验码
+
+static int E014_FrameEnd1 = 0x0D;		//E014的帧尾1
+static int E014_FrameEnd2 = 0x0A;		//E014的帧尾2
+static int E014_FrameEnd3 = 0x0D;		//E014的帧尾3
+static int E014_FrameEnd4 = 0x0A;		//E014的帧尾4
+static int E014_FrameEnd5 = 0x0D;		//E014的帧尾5
+static int E014_FrameEnd6 = 0x0A;		//E014的帧尾6
 //--------------------------------------------------------------------
 static unsigned char E015[25];//用来存放E015发送出去的数组
 
@@ -272,16 +326,25 @@ static int E015_FrameEnd6 = 0x0A;		//E015的帧尾6
 
 
 //全局函数声明
-void Receive_A011(unsigned char* Judgement_Data, int Judgement_Length);  //A011函数
-void Receive_A013(unsigned char* Judgement_Data, int Judgement_Length);  //A013函数
-void Receive_A014(unsigned char* Judgement_Data, int Judgement_Length);  //A014函数
-unsigned char Send_E011(int Receive_IsBroadcast);  //E011函数
+void Receive_A011(unsigned char* Judgement_Data, int Judgement_Length);  //A011函数(查询LORA主设备的参数(当前区域以及SN))
+void Receive_A012(unsigned char* Judgement_Data, int Judgement_Length);  //A012函数(基地服务器设置LORA设备的工作组编号)
+void Receive_A013(unsigned char* Judgement_Data, int Judgement_Length);  //A013函数(基地服务器设置设备SN，区域及子设备总路数)
+void Receive_A014(unsigned char* Judgement_Data, int Judgement_Length);  //A014函数(查询LORA设备的工作状态)
+void Receive_A015(unsigned char* Judgement_Data, int Judgement_Length);  //A015函数(强制停止工作指令)
+
+unsigned char Send_E011(int Receive_IsBroadcast);  //E011函数(按键上报当前参数)
 unsigned char E011_init();	//E011初始化函数
-unsigned char Send_E014(int Receive_IsBroadcast);		//E014函数
+unsigned char Send_E012(int Receive_IsBroadcast);  //E012函数(LORA设备请求设置工作组编号)
+unsigned char E012_init();	//E012初始化函数
+unsigned char Send_E013(int Receive_IsBroadcast);  //E013函数(LORA设备请求设置SN、区域、设备类型及子设备路数)
+unsigned char E013_init();	//E013初始化函数
+unsigned char Send_E014(int Receive_IsBroadcast);	//E014函数(LORA设备上报实时工作状态)
 unsigned char E014_init();	//E014初始化函数
-unsigned char Send_E015(int Receive_IsBroadcast, int E015_status);		//E015函数
+unsigned char Send_E015(int Receive_IsBroadcast, int E015_status);		//E015函数(LORA设备通用回执帧)
 unsigned char E015_init();	//E015初始化函数
+
 unsigned char SN_ZoneISOK(unsigned char* Judgement_Data, int Judgement_Length);	//测试SN区域是否写入成功函数
+unsigned char Signal_query();//信号查询函数
 
 
 //类结构声明
