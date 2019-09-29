@@ -24,7 +24,7 @@
 #include "user_A021_E021.h"
 #include "user_crc8.h"
 #include "user_judgement.h"
-#include "user_A011_E011.h"
+#include "user_Public_directive.h"
 #include "user_lorainit.h"
 #include "user_initialization.h"
 #include "AT24CXX.h"
@@ -55,7 +55,7 @@ void setup()
 	Serial.println("初始化执行结束");
 	Serial.println("End of Initialization Execution");
 
-	if (AT24CXX_ReadOneByte(0) == 0x01 && AT24CXX_ReadOneByte(1) == 0x01)
+	if (AT24CXX_ReadOneByte(A_LORA_SetOK_flag) == 0x01 && AT24CXX_ReadOneByte(A_EEP_SetOK_flag) == 0x01)
 	{
 		Serial.println("初始化程序执行成功！");
 		Serial.println("Successful execution of initializer!!!");
@@ -102,7 +102,7 @@ void loop()
 
 	//Automatic_execution_test();//自动执行测试函数
 
-	//forswitch();//执行函数
+	forswitch();//执行函数
 
 	//Timely_reporting();//定时上报状态函数
 
@@ -147,10 +147,10 @@ void Restore_factory_settings(void)//恢复出厂设置函数
 			////-------------------------------------------
 			////======测试时所用代码块，实际使用请注释=====
 			////将所有的标志位都清为0
-			//AT24CXX_WriteOneByte(0, 0x00);//lora初始化的标志位
-			//AT24CXX_WriteOneByte(1, 0x00);//EEPROM设置的标志位
-			//AT24CXX_WriteOneByte(2, 0x00);//申号的标志位
-			//AT24CXX_WriteOneByte(13, 0x00);//自动策略的标志位
+			//AT24CXX_WriteOneByte(A_LORA_SetOK_flag, 0x00);//lora初始化的标志位
+			//AT24CXX_WriteOneByte(A_EEP_SetOK_flag, 0x00);//EEPROM设置的标志位
+			//AT24CXX_WriteOneByte(A_Register_OK_flag, 0x00);//申号的标志位
+			//AT24CXX_WriteOneByte(A_Policy_Relevance_flag, 0x00);//自动策略的标志位
 			////-------------------------------------------
 			//Serial.println("开始进行恢复出厂设置");
 
@@ -177,7 +177,7 @@ void Initialization_exception(void)//初始化异常函数
 
 void Button_Waiting_report(void)//按键等待上报函数
 {
-	while (AT24CXX_ReadOneByte(2) == 0x00)//Register_OK_flag	已经完成申号的标志位
+	while (AT24CXX_ReadOneByte(A_Register_OK_flag) == 0x00)//Register_OK_flag	已经完成申号的标志位
 	{
 		//代表未设置工作参数
 		Serial.println("未设置工作参数,如需要设置工作参数，请长按按键1");
@@ -199,7 +199,7 @@ void Button_Waiting_report(void)//按键等待上报函数
 				delay(250);
 				//进入E011函数上报请求当前参数
 				Send_E011(Receive_IsBroadcast);//这里的Receive_IsBroadcast是否有值？
-				AT24CXX_WriteOneByte(2, 0X01);
+				AT24CXX_WriteOneByte(A_Register_OK_flag, 0X01);
 			}
 		}
 	}

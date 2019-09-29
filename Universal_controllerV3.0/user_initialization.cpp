@@ -120,12 +120,12 @@ void Initialization()//初始化函数
 		//{
 		//	AT24CXX_WriteOneByte(0, 0x01);//LORA初始化完成的标志位
 		//}
-		AT24CXX_WriteOneByte(1, 0x00);//EEPROM初始化完成的标志位
-		AT24CXX_WriteOneByte(2, 0x00);//申号完成的标志位
+		AT24CXX_WriteOneByte(A_EEP_SetOK_flag, 0x00);//EEPROM初始化完成的标志位
+		AT24CXX_WriteOneByte(A_Register_OK_flag, 0x00);//申号完成的标志位
 	}
 
 	//设置EEPROM的初始化
-	if (AT24CXX_ReadOneByte(1) == 0x01)
+	if (AT24CXX_ReadOneByte(A_EEP_SetOK_flag) == 0x01)
 	{
 		//说明进行过EEPROM的初始化
 		//Serial.println("EEPROM已进行过初始化");
@@ -137,41 +137,41 @@ void Initialization()//初始化函数
 	}
 	else
 	{
-		if (LORA_reset == 1 || AT24CXX_ReadOneByte(0) != 0x01)
+		if (LORA_reset == 1 || AT24CXX_ReadOneByte(A_LORA_SetOK_flag) != 0x01)
 		{
 			//Serial.println("LORA进行初始化");
 			Serial.println("LORA begin init");
-			AT24CXX_WriteOneByte(0, 0x00);//LORA初始化完成的标志位
+			AT24CXX_WriteOneByte(A_LORA_SetOK_flag, 0x00);//LORA初始化完成的标志位
 		}
 		//else
 		//{
 		//	AT24CXX_WriteOneByte(0, 0x01);//LORA初始化完成的标志位
 		//}
-		AT24CXX_WriteOneByte(1, 0x00);//EEPROM初始化完成的标志位
-		AT24CXX_WriteOneByte(2, 0x00);//申号完成的标志位
-		for (size_t i = 3; i <= 11; i++)//SN的存储
+		AT24CXX_WriteOneByte(A_EEP_SetOK_flag, 0x00);//EEPROM初始化完成的标志位
+		AT24CXX_WriteOneByte(A_Register_OK_flag, 0x00);//申号完成的标志位
+		for (size_t i = A_SN_1; i <= A_SN_9; i++)//SN的存储
 		{
 			AT24CXX_WriteOneByte(i, 0x00);
 		}
-		AT24CXX_WriteOneByte(12, 0x01);//LORA主设备区域ID的存储
-		AT24CXX_WriteOneByte(13, 0x00);//LORA自动策略关联的标志位
-		for (size_t i = 14; i <= 55; i++)//工作组数组的初始化
+		AT24CXX_WriteOneByte(A_ZoneID, 0x01);//LORA主设备区域ID的存储
+		AT24CXX_WriteOneByte(A_Policy_Relevance_flag, 0x00);//LORA自动策略关联的标志位
+		for (size_t i = A_C003_Channel_1_SlaverTypeId_1; i <= A_C004_Channel_2_GroupID_5; i++)//工作组数组的初始化
 		{
 			AT24CXX_WriteOneByte(i, 0x01);
 		}
-		for (size_t i = 56; i <= 88; i++)//预留字段的初始化
+		for (size_t i = A_bool_type_reserved_field; i <= A_D_Delay_Reserved_Field_8; i++)//预留字段的初始化
 		{
 			AT24CXX_WriteOneByte(i, 0x00);
 		}
 
-		AT24CXX_WriteOneByte(89, 100);//存储字节的标志位
+		AT24CXX_WriteOneByte(A_Storage_bytes_Flag, 100);//存储字节的标志位
 
-		for (size_t i = 90; i <= 99; i++)//自动策略语句开始结束位置的初始化
+		for (size_t i = A_Begin_policy_statement_1; i <= A_End_policy_statement_5; i++)//自动策略语句开始结束位置的初始化
 		{
 			AT24CXX_WriteOneByte(i, 0x00);
 		}
 
-		for (size_t i = 100; i < AT24C02_bytes; i++)//自动策略语句存放区域的初始化
+		for (size_t i = A_policy_statement; i < AT24C02_bytes; i++)//自动策略语句存放区域的初始化
 		{
 			AT24CXX_WriteOneByte(i, 0x00);
 		}
@@ -179,7 +179,7 @@ void Initialization()//初始化函数
 
 
 		//---------------------------------------------------------
-		AT24CXX_WriteOneByte(1, 0x01);//EEPROM初始化完成的标志位
+		AT24CXX_WriteOneByte(A_EEP_SetOK_flag, 0x01);//EEPROM初始化完成的标志位
 		//Serial.println(EEPROM.read(1),HEX);
 		Serial.println("EEPROM存储空间的初始化完成");
 		Serial.println("EEPROM Successful setup");
@@ -190,7 +190,7 @@ void Initialization()//初始化函数
 	}
 
 	//这里就读取LORA标志位是否设置完成，未设置完成就进行LORA模块的设置
-	if (AT24CXX_ReadOneByte(0) == 0x01)
+	if (AT24CXX_ReadOneByte(A_LORA_SetOK_flag) == 0x01)
 	{
 		Serial.println("LORA已进行过初始化");
 		Serial.println("LORA already setup");
@@ -203,7 +203,7 @@ void Initialization()//初始化函数
 	{
 		Serial.println("LORA开始设置......");
 		Serial.println("LORA Setup Begin......");
-		Serial.println(AT24CXX_ReadOneByte(0), HEX);//0
+		Serial.println(AT24CXX_ReadOneByte(A_LORA_SetOK_flag), HEX);//0
 		if (debug == 1)
 		{
 			delay(1000);

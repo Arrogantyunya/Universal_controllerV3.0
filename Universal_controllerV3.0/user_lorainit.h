@@ -11,7 +11,17 @@
 #endif
 
 #include "user_initialization.h"	//引用头文件
-//#include ""
+//#include <EEPROM.h>
+#include "user_Set_Correlation.h"
+#include "user_A025_E025.h"
+#include "user_A021_E021.h"
+#include "user_crc8.h"
+#include "user_judgement.h"
+#include "user_Public_directive.h"
+#include <arduino.h>
+#include "AT24CXX.h"
+#include "i2c.h"
+#include "user_HEXtoDEC.h"
 
 //引脚定义
 

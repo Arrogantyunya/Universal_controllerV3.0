@@ -30,9 +30,10 @@
 #include "user_lorainit.h"
 #include "AT24CXX.h"
 #include "i2c.h"
+#include "user_Public_directive.h"
 
 
-#define debug			1		//debug为1进入测试模式，每次重启所有标志位都清零;为0进入正常使用模式，不会清空标志位
+#define debug			0		//debug为1进入测试模式，每次重启所有标志位都清零;为0进入正常使用模式，不会清空标志位
 #define debug_crc		1		//debug_crc为1进入CRC不需要校验的模式，将CRC位发送D6将校验通过；为0时为正常校验CRC
 #define debug_print		1		//debug_print为1进入测试输出模式，将会打印信息；为0时将不打印输出
 

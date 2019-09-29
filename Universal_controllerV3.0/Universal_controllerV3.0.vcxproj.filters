@@ -27,9 +27,6 @@
     <ClInclude Include="i2c.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="user_A011_E011.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="user_A021_E021.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,15 +54,15 @@
     <ClInclude Include="user_Set_Correlation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="user_Public_directive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AT24CXX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="i2c.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="user_A011_E011.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="user_A021_E021.cpp">
@@ -93,6 +90,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="user_Set_Correlation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_Public_directive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

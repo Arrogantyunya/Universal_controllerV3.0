@@ -108,7 +108,7 @@
   <ItemGroup>
     <ClInclude Include="AT24CXX.h" />
     <ClInclude Include="i2c.h" />
-    <ClInclude Include="user_A011_E011.h" />
+    <ClInclude Include="user_Public_directive.h" />
     <ClInclude Include="user_A021_E021.h" />
     <ClInclude Include="user_A025_E025.h" />
     <ClInclude Include="user_crc8.h" />
@@ -123,7 +123,7 @@
   <ItemGroup>
     <ClCompile Include="AT24CXX.cpp" />
     <ClCompile Include="i2c.cpp" />
-    <ClCompile Include="user_A011_E011.cpp" />
+    <ClCompile Include="user_Public_directive.cpp" />
     <ClCompile Include="user_A021_E021.cpp" />
     <ClCompile Include="user_A025_E025.cpp" />
     <ClCompile Include="user_crc8.cpp" />

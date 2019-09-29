@@ -26,9 +26,13 @@
 	#include "WProgram.h"
 #endif
 
-#include<arduino.h>	                            //引用标准库的头文件
-#include"user_initialization.h"	                //引用非标准库的头文件
-#include"user_crc8.h"
+#include <arduino.h>	                            //引用标准库的头文件
+#include "user_initialization.h"	                //引用非标准库的头文件
+#include "user_crc8.h"
+#include "user_Public_directive.h"
+#include "user_A021_E021.h"
+#include "user_A025_E025.h"
+#include "user_Set_Correlation.h"
 
  //全局变量
 static unsigned char Judgement_Data[128];   	//用来存放接收到的数据
