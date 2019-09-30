@@ -71,7 +71,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A012");
 							}
-							//Receive_A012(Judgement_Data, Judgement_Length);
+							Receive_A012(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x13)//帧ID为A013
 						{
@@ -111,7 +111,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A018");
 							}
-							//Receive_A018(Judgement_Data, Judgement_Length);
+							Receive_A018(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x19)//帧ID为A019
 						{
@@ -121,7 +121,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A019");
 							}
-							//Receive_A019(Judgement_Data, Judgement_Length);
+							Receive_A019(Judgement_Data, Judgement_Length);
 						}
 
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x20)//帧ID为A020
@@ -162,7 +162,7 @@ unsigned char Judgement_function(unsigned char * Judgement_Data, int Judgement_L
 							{
 								Serial.println("帧ID为A023");
 							}
-							//Receive_A023(Judgement_Data, Judgement_Length);
+							Receive_A023(Judgement_Data, Judgement_Length);
 						}
 						else if (Judgement_Data[1] == 0xA0 && Judgement_Data[2] == 0x24)//帧ID为A024
 						{

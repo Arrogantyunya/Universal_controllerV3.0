@@ -24,7 +24,7 @@
 
 
 //全局变量
-//static int Storage_bytes_Flag = 100;			//存储字节的标志位
+static int Storage_bytes_Flag = 100;			//存储字节的标志位
 
 static unsigned char Out_State[6];              //用来存放状态值rd1
 static unsigned long duration[6];               //用来存放持续时间值Duration_time
@@ -247,38 +247,37 @@ static size_t i_0 = 0, i_1 = 0, i_2 = 0, i_3 = 0;//循环次数函数
 
 //全局函数声明
 //void LORA_Receive_information(void);//LORA接收函数
-//void Receive_A018(unsigned char* Judgement_Data, int Judgement_Length);	//A018函数(设置LORA主设备的RTC时间)
-//void Receive_A019(unsigned char* Judgement_Data, int Judgement_Length);	//A019函数(设置LORA主设备定时执行的时间段)
+void Receive_A018(unsigned char* Judgement_Data, int Judgement_Length);	//A018函数(设置LORA主设备的RTC时间)
+void Receive_A019(unsigned char* Judgement_Data, int Judgement_Length);	//A019函数(设置LORA主设备定时执行的时间段)
 void Receive_A020(unsigned char* Judgement_Data, int Judgement_Length);	//A020函数(设置某类型接口挂载的某一路子设备类型及工作组)
 void Receive_A022(unsigned char* Judgement_Data, int Judgement_Length);	//A022函数(设置某路（或某组）输出设备状态)
-//void Receive_A023(unsigned char* Judgement_Data, int Judgement_Length);	//A023函数(设置数字输入关联输出状态)
+void Receive_A023(unsigned char* Judgement_Data, int Judgement_Length);	//A023函数(设置数字输入关联输出状态)
 void Receive_A024(unsigned char* Judgement_Data, int Judgement_Length);	//A024函数(设置预留字段（B\I\T\C\D）值)
 
-//unsigned char Send_E022(int Receive_IsBroadcast);	//E022函数
-//unsigned char E022_init();	//E022初始化函数
-//unsigned char Send_E023(int Receive_IsBroadcast);	//E023函数
-//unsigned char E023_init();	//E023初始化函数
-//unsigned char Send_E024(int Receive_IsBroadcast);	//E024函数
-//unsigned char E024_init();	//E024初始化函数
-//unsigned char SN_ZoneISOK(unsigned char* Judgement_Data, int Judgement_Length);	//测试SN区域是否写入成功函数
+unsigned char Send_E022(int Receive_IsBroadcast);	//E022函数
+unsigned char E022_init();	//E022初始化函数
+unsigned char Send_E023(int Receive_IsBroadcast);	//E023函数
+unsigned char E023_init();	//E023初始化函数
+unsigned char Send_E024(int Receive_IsBroadcast);	//E024函数
+unsigned char E024_init();	//E024初始化函数
 int Verification_Reserved_field(unsigned char* Judgement_Data, int Initial);
 void forswitch();//轮询函数
 void Allclose();//全关函数
 //void Analog1_Write();
 //void Analog2_Write();
-//int data_processing(String data_1);//数据处理函数，分割# 处理判断以及执行
-//int condition_test(String con1);//处理判断语句的函数
-//int implement_test(String imp1);//处理执行语句的函数
-//int Condition_Judgment(int conx, int ret_condition_test);//条件语句判断函数
-//int Implement_Handle(int impx, int ret_Implement_test);
-//void array_empty_test();//数组清空函数
-//void array_print_test();//数组打印测试函数
-//void Automated_strategy();//策略函数
-//int Voltage_Value_Processing(String str_V);//电压值处理函数
-//unsigned long Get_HeartBeat_oldtime();//得到eartBeat_oldtime的值
-//bool Get_RTC_Flag();//得到RTC_Flag的值
-//void Automatic_execution_test();//自动执行测试函数
-//void RTC_Clock();//RTC时钟
+int data_processing(String data_1);//数据处理函数，分割# 处理判断以及执行
+int condition_test(String con1);//处理判断语句的函数
+int implement_test(String imp1);//处理执行语句的函数
+int Condition_Judgment(int conx, int ret_condition_test);//条件语句判断函数
+int Implement_Handle(int impx, int ret_Implement_test);
+void array_empty_test();//数组清空函数
+void array_print_test();//数组打印测试函数
+void Automated_strategy();//策略函数
+int Voltage_Value_Processing(String str_V);//电压值处理函数
+unsigned long Get_HeartBeat_oldtime();//得到eartBeat_oldtime的值
+bool Get_RTC_Flag();//得到RTC_Flag的值
+void Automatic_execution_test();//自动执行测试函数
+void RTC_Clock();//RTC时钟
 
 //类结构声明
 

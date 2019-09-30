@@ -98,9 +98,9 @@ void loop()
 
 	LORA_Receive_information();	//LORA的接收函数
 
-	//Automated_strategy();//自动策略函数
+	Automated_strategy();//自动策略函数
 
-	//Automatic_execution_test();//自动执行测试函数
+	Automatic_execution_test();//自动执行测试函数
 
 	forswitch();//执行函数
 
@@ -202,6 +202,80 @@ void Button_Waiting_report(void)//按键等待上报函数
 				AT24CXX_WriteOneByte(A_Register_OK_flag, 0X01);
 			}
 		}
+	}
+}
+
+
+void RTC_request(void)//RTC时间请求函数
+{
+	if (Get_RTC_Flag() == 0x00)//RTC_Flag	RTC时间是否拥有的标志
+	{
+		int RTC_Wait_time = 5;
+		unsigned long RTCtime_old;
+
+		//代表没有RTC时间
+		Serial.println("RTC时间未设置,等待服务器设置RTC时间...");
+
+		//进行RTC时间的请求
+		Send_E024(Receive_IsBroadcast);
+
+		RTCtime_old = millis();
+		while (millis() - RTCtime_old <= RTC_Wait_time * 1000)
+		{
+			LORA_Receive_information();	//LORA的接收函数
+
+			//Automated_strategy();//自动策略函数
+
+			//forswitch();//执行函数
+
+			//Timely_reporting();//定时上报状态函数
+
+			//Heartbeat();//心跳函数
+
+			Forced_Start_Relay();//强制启动继电器
+
+			Restore_factory_settings();//恢复出厂设置函数
+		}
+	}
+	else
+	{
+		/*if (debug == 1)
+		{
+			if (debug_print == 1)
+			{
+				Serial.println("RTC时间已经设置完成");
+			}
+			delay(1500);
+		}*/
+	}
+}
+
+void Timely_reporting(void)//定时上报状态函数
+{
+	if (millis() - Get_Delivery_oldtime() >= Delivery_time * 1000 && Get_Delivery_oldtime() > 0)
+	{
+		if (debug_print == 1)
+		{
+			Serial.println("定时自动上报");
+			//delay(1000);
+		}
+		//进行状态的回执
+		Send_E021(Receive_IsBroadcast);
+		Send_E022(Receive_IsBroadcast);
+	}
+}
+
+void Heartbeat(void)//心跳函数
+{
+	if (millis() - Get_HeartBeat_oldtime() >= Heartbeat_time * 1000 && Get_HeartBeat_oldtime() > 0)
+	{
+		if (debug_print == 1)
+		{
+			Serial.println("心跳上报");
+			//delay(1000);
+		}
+		//进行心跳的回执
+		Send_E023(Receive_IsBroadcast);
 	}
 }
 

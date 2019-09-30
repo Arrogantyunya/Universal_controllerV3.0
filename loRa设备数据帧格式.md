@@ -437,10 +437,10 @@ ID为`14052A0C`的LoRa设备通用回执（收到查询参数指令）：
 
 ## 3 LoRa开关通用回执状态表 
 
-| 状态名   | FactoryMode |  AskUploadParamsOk   |  AskUploadParamsErr  | AssignGroupIdArrayOk | AssignGroupIdArrayErr | SetSnAndSlaverCountOk  | SetSnAndSlaverCountErr |    TrunOffOk     |    TrunOffErr    | SetParamsOk  | SetParamsErr |
-| -------- | :---------: | :------------------: | :------------------: | :------------------: | :-------------------: | :--------------------: | :--------------------: | :--------------: | :--------------: | :----------: | :----------: |
-| 状态值   |     00      |          01          |          02          |          03          |          04           |           05           |           06           |        07        |        08        |      09      |      0A      |
-| 状态说明 |  出厂模式   | 查询LoRa设备参数成功 | 查询LoRa设备参数失败 |   设置组Id数组成功   |   设置组Id数组失败    | 设置SN及子设备路数成功 | 设置SN及子设备路数失败 | 强制停止设备成功 | 强制停止设备失败 | 设置参数成功 | 设置参数失败 |
+| 状态名   | FactoryMode |  AskUploadParamsOk   |  AskUploadParamsErr  | AssignGroupIdArrayOk | AssignGroupIdArrayErr | SetSnAndSlaverCountOk  | SetSnAndSlaverCountErr |    TrunOffOk     |    TrunOffErr    | SetParamsOk  | SetParamsErr | Set_association_status_succeed | Set_association_status_failed | State_Storage_Exceeding_the_Upper_Limit | Data_loss_due_to_abnormal_power_off | Incorrect_information_error |      |      |
+| -------- | :---------: | :------------------: | :------------------: | :------------------: | :-------------------: | :--------------------: | :--------------------: | :--------------: | :--------------: | :----------: | :----------: | :----------------------------: | :---------------------------: | :-------------------------------------: | :---------------------------------: | :-------------------------: | ---- | ---- |
+| 状态值   |     00      |          01          |          02          |          03          |          04           |           05           |           06           |        07        |        08        |      09      |      0A      |               0B               |              0C               |                   0D                    |                 0E                  |             0F              |      |      |
+| 状态说明 |  出厂模式   | 查询LoRa设备参数成功 | 查询LoRa设备参数失败 |   设置组Id数组成功   |   设置组Id数组失败    | 设置SN及子设备路数成功 | 设置SN及子设备路数失败 | 强制停止设备成功 | 强制停止设备失败 | 设置参数成功 | 设置参数失败 |        设置关联状态成功        |       设置关联状态失败        |      设置关联状态失败，存储超上限       |          异常断电数据丢失           |        区域信息错误         |      |      |
 
 # 三、实时状态回复详细说明
 

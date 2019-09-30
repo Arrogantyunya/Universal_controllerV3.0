@@ -103,7 +103,10 @@ void Receive_A011(unsigned char* Judgement_Data, int Judgement_Length)//A011函�
 /////////////////////////////////////////////////////////////////////
 void Receive_A012(unsigned char* Judgement_Data, int Judgement_Length)
 {
-
+	for (size_t i = 0; i < 5; i++)
+	{
+		Serial.println("没有用到的指令A012！！！");
+	}
 }
 
 //函 数 名：Receive_A013() 
@@ -225,7 +228,7 @@ void Receive_A014(unsigned char* Judgement_Data, int Judgement_Length)
 
 		//进行状态的回执
 		Send_E014(Receive_IsBroadcast);//各路数状态的回执
-		//Send_E022(Receive_IsBroadcast);//各路数时间的回执
+		Send_E022(Receive_IsBroadcast);//各路数时间的回执
 	}
 	else
 	{
